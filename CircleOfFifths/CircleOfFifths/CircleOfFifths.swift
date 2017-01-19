@@ -106,6 +106,7 @@ public class CircleOfFifths: UIView {
 
   private var chordPie: PieChartLayer?
   private var circlePie: PieChartLayer?
+  private var selectedSlice: PieChartSlice?
 
   public override func draw(_ rect: CGRect) {
     super.draw(rect)
@@ -114,6 +115,16 @@ public class CircleOfFifths: UIView {
     }
 
     draw()
+  }
+
+  public func selectNote(note: NoteType?) {
+    selectedSlice?.isSelected = false
+    guard let note = note,
+      let slice = circlePie?.slices[note.circleIndex]
+      else { return }
+    slice.isSelected = true
+    selectedSlice = slice
+    circlePie?.layoutSublayers()
   }
 
   private func setup() {

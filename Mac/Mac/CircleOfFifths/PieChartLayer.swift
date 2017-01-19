@@ -104,7 +104,7 @@ public class PieChartLayer: CAShapeLayer {
       let slice = slices[index]
 
       // slice layer
-      let color = slice.isEnabled ? (slice.isSelected ? slice.highlightedColor.cgColor : slice.color.cgColor) : slice.disabledColor.cgColor
+      let color = slice.isSelected ? slice.highlightedColor.cgColor : (slice.isEnabled ? slice.color.cgColor : slice.disabledColor.cgColor)
       sliceLayer.fillColor = color
       sliceLayer.strokeColor = strokeColor
       sliceLayer.lineWidth = lineWidth

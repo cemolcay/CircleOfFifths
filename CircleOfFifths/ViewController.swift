@@ -7,19 +7,14 @@
 //
 
 import UIKit
+import MusicTheorySwift
 
 class ViewController: UIViewController {
+  @IBOutlet weak var circle: CircleOfFifths?
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    let note = NoteType.all[Int(arc4random_uniform(UInt32(NoteType.all.count)))]
+    circle?.selectNote(note: note)
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
-
 }
 
