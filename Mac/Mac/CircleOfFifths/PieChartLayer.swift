@@ -52,6 +52,7 @@ public class PieChartSlice {
     self.disabledColor = disabledColor ?? color
     self.attributedString = attributedString
     textLayer = CATextLayer()
+    textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
   }
 }
 

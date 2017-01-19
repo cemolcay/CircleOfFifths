@@ -93,8 +93,8 @@
 		B274B0DE1E30967200FFC7A3 /* CircleOfFifths */ = {
 			isa = PBXGroup;
 			children = (
-				B274B0DF1E30967200FFC7A3 /* CircleOfFifths.swift */,
 				B274B0E01E30967200FFC7A3 /* PieChartLayer.swift */,
+				B274B0DF1E30967200FFC7A3 /* CircleOfFifths.swift */,
 			);
 			path = CircleOfFifths;
 			sourceTree = "<group>";
