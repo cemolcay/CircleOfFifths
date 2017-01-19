@@ -5,6 +5,9 @@
       location = "group:CircleOfFifths.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Mac/Mac.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

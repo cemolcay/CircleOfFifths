@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FDE5ABA410E5439F352A88A1E1CB37B1"
+               BlueprintIdentifier = "57AF5466D40245A54BCE2F6B779F290D"
                BuildableName = "Pods_CircleOfFifths.framework"
                BlueprintName = "Pods-CircleOfFifths"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FDE5ABA410E5439F352A88A1E1CB37B1"
+            BlueprintIdentifier = "57AF5466D40245A54BCE2F6B779F290D"
             BuildableName = "Pods_CircleOfFifths.framework"
             BlueprintName = "Pods-CircleOfFifths"
             ReferencedContainer = "container:Pods.xcodeproj">
