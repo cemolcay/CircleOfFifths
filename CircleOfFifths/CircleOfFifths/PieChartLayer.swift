@@ -8,19 +8,19 @@
 
 import UIKit
 
-class PieChartSlice {
-  var startAngle: CGFloat
-  var endAngle: CGFloat
-  var color: UIColor
-  var highlightedColor: UIColor
-  var disabledColor: UIColor
-  var textLayer: CATextLayer
-  var attributedString: NSAttributedString?
+public class PieChartSlice {
+  public var startAngle: CGFloat
+  public var endAngle: CGFloat
+  public var color: UIColor
+  public var highlightedColor: UIColor
+  public var disabledColor: UIColor
+  public var textLayer: CATextLayer
+  public var attributedString: NSAttributedString?
 
-  var isEnabled: Bool = true
-  var isSelected: Bool = false
+  public var isEnabled: Bool = true
+  public var isSelected: Bool = false
 
-  init(startAngle: CGFloat, endAngle: CGFloat, color: UIColor, highlightedColor: UIColor? = nil, disabledColor: UIColor? = nil, attributedString: NSAttributedString? = nil) {
+  public init(startAngle: CGFloat, endAngle: CGFloat, color: UIColor, highlightedColor: UIColor? = nil, disabledColor: UIColor? = nil, attributedString: NSAttributedString? = nil) {
     self.startAngle = startAngle
     self.endAngle = endAngle
     self.color = color
@@ -31,16 +31,16 @@ class PieChartSlice {
   }
 }
 
-class PieChartLayer: CAShapeLayer {
-  var slices: [PieChartSlice]
-  var center: CGPoint
-  var radius: CGFloat
-  var labelPositionTreshold: CGFloat = 10
-  var angleTreshold: CGFloat = -90
+public class PieChartLayer: CAShapeLayer {
+  public var slices: [PieChartSlice]
+  public var center: CGPoint
+  public var radius: CGFloat
+  public var labelPositionTreshold: CGFloat = 10
+  public var angleTreshold: CGFloat = -90
 
   private var sliceLayers = [CAShapeLayer]()
 
-  init(radius: CGFloat, center: CGPoint, slices: [PieChartSlice]) {
+  public init(radius: CGFloat, center: CGPoint, slices: [PieChartSlice]) {
     self.radius = radius
     self.center = center
     self.slices = slices
@@ -48,7 +48,7 @@ class PieChartLayer: CAShapeLayer {
     setup()
   }
 
-  required init?(coder aDecoder: NSCoder) {
+  public required init?(coder aDecoder: NSCoder) {
     radius = 0
     center = .zero
     slices = []
@@ -56,7 +56,7 @@ class PieChartLayer: CAShapeLayer {
     setup()
   }
 
-  override func layoutSublayers() {
+  public override func layoutSublayers() {
     draw()
   }
 
