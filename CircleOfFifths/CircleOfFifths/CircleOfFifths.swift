@@ -9,8 +9,8 @@
 import UIKit
 import MusicTheorySwift
 
-extension ScaleType {
-  var circleModeRootInterval: Interval {
+internal extension ScaleType {
+  internal var circleModeRootInterval: Interval {
     switch self {
     case .major: return .P4
     case .minor: return .m6
@@ -24,8 +24,8 @@ extension ScaleType {
   }
 }
 
-extension NoteType {
-  var circleIndex: Int {
+internal extension NoteType {
+  internal var circleIndex: Int {
     switch self {
     case .c: return 0
     case .g: return 1
@@ -42,7 +42,7 @@ extension NoteType {
     }
   }
 
-  var circleStartAngle: CGFloat {
+  internal var circleStartAngle: CGFloat {
     switch self {
     case .c: return -15
     case .g: return 15
@@ -59,7 +59,7 @@ extension NoteType {
     }
   }
 
-  var circleEndAngle: CGFloat {
+  internal var circleEndAngle: CGFloat {
     switch self {
     case .c: return 15
     case .g: return 45
@@ -77,29 +77,29 @@ extension NoteType {
   }
 }
 
-enum CircleChordType {
+internal enum CircleChordType {
   case major
   case minor
   case diminished
 }
 
 @IBDesignable
-class CircleOfFifths: UIView {
-  var scale = Scale(type: .minor, key: .c) { didSet { draw() }}
-  @IBInspectable var defaultColor: UIColor = .white { didSet { draw() }}
-  @IBInspectable var highlightedColor: UIColor = .red { didSet { draw() }}
-  @IBInspectable var disabledColor: UIColor = .lightGray { didSet { draw() }}
-  @IBInspectable var fontSize: CGFloat = 15 { didSet { draw() }}
-  @IBInspectable var textColor: UIColor = .black { didSet { draw() }}
-  @IBInspectable var textTreshold: CGFloat = 10  { didSet { draw() }}
-  @IBInspectable var chordPieHeight: CGFloat = 10 { didSet { draw() }}
-  @IBInspectable var chordPieLineColor: UIColor = .black { didSet { draw() }}
-  @IBInspectable var chordPieLineWidth: CGFloat = 1 / UIScreen.main.scale { didSet { draw() }}
-  @IBInspectable var circlePieLineColor: UIColor = .black { didSet { draw() }}
-  @IBInspectable var circlePieLineWidth: CGFloat = 1 / UIScreen.main.scale { didSet { draw() }}
-  @IBInspectable var majorColor: UIColor = .red { didSet { draw() }}
-  @IBInspectable var minorColor: UIColor = .blue { didSet { draw() }}
-  @IBInspectable var diminishedColor: UIColor = .green { didSet { draw() }}
+public class CircleOfFifths: UIView {
+  public var scale = Scale(type: .minor, key: .c) { didSet { draw() }}
+  @IBInspectable public var defaultColor: UIColor = .white { didSet { draw() }}
+  @IBInspectable public var highlightedColor: UIColor = .red { didSet { draw() }}
+  @IBInspectable public var disabledColor: UIColor = .lightGray { didSet { draw() }}
+  @IBInspectable public var fontSize: CGFloat = 15 { didSet { draw() }}
+  @IBInspectable public var textColor: UIColor = .black { didSet { draw() }}
+  @IBInspectable public var textTreshold: CGFloat = 10  { didSet { draw() }}
+  @IBInspectable public var chordPieHeight: CGFloat = 10 { didSet { draw() }}
+  @IBInspectable public var chordPieLineColor: UIColor = .black { didSet { draw() }}
+  @IBInspectable public var chordPieLineWidth: CGFloat = 1 / UIScreen.main.scale { didSet { draw() }}
+  @IBInspectable public var circlePieLineColor: UIColor = .black { didSet { draw() }}
+  @IBInspectable public var circlePieLineWidth: CGFloat = 1 / UIScreen.main.scale { didSet { draw() }}
+  @IBInspectable public var majorColor: UIColor = .red { didSet { draw() }}
+  @IBInspectable public var minorColor: UIColor = .blue { didSet { draw() }}
+  @IBInspectable public var diminishedColor: UIColor = .green { didSet { draw() }}
 
   private var circle: [NoteType] = [.c, .g, .d, .a, .e, .b, .gFlat, .dFlat, .aFlat, .eFlat, .bFlat, .f]
   private var chords: [CircleChordType] = [.major, .major, .major, .minor, .minor, .minor, .diminished]
@@ -107,7 +107,7 @@ class CircleOfFifths: UIView {
   private var chordPie: PieChartLayer?
   private var circlePie: PieChartLayer?
 
-  override func draw(_ rect: CGRect) {
+  public override func draw(_ rect: CGRect) {
     super.draw(rect)
     if chordPie == nil || circlePie == nil {
       setup()
