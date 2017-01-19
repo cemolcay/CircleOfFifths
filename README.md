@@ -3,7 +3,7 @@ CircleOfFifths
 
 Fully customisable IBDesignable circle of fifths implementation.
 
-![alt tag]()
+![alt tag](https://github.com/cemolcay/CircleOfFifths/blob/master/demo.png?raw=true)
 
 Usage
 ----
