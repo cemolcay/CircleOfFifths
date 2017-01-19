@@ -1,0 +1,538 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1885F586D21F0A4E81931EC7A53A0ED9 /* MusicTheory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1860B19D4C679880DBC3293FD8B855A4 /* MusicTheory.swift */; };
+		43897F72ACFDE130EF71338701D5C284 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		66FCFC3471411F5A047321C52FA2ECDA /* Pods-CircleOfFifths-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05E9421D92142C4F310CD8D664DF89 /* Pods-CircleOfFifths-dummy.m */; };
+		6B6CF9C2BB82E9AD8B99CF1E97E2B0D1 /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25420570F3C4F9B9F902FAA441C7A0D0 /* Dataset.swift */; };
+		703AC1854DFE74DDEDA6DBFB933FC741 /* MusicTheorySwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E1022F6B99EDD3B0EBE9AEFBB50896D /* MusicTheorySwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A0354CE35F43D17823EAF48B36F62265 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		BA9E9DDE74DB174648F25B32D66AD935 /* Pods-CircleOfFifths-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 41DF807F7D7CDB40E1B36618D28E837B /* Pods-CircleOfFifths-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA2D5143E2CF45C4C48000FC3A242CA4 /* MusicTheorySwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 02A7C5A04988112AB00924AEDD1FB941 /* MusicTheorySwift-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9CC527A5C681EA76B5EF565FA4E9D421 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C53E26232A6E33F6BAD422FDAECFF921;
+			remoteInfo = MusicTheorySwift;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02A7C5A04988112AB00924AEDD1FB941 /* MusicTheorySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MusicTheorySwift-dummy.m"; sourceTree = "<group>"; };
+		1860B19D4C679880DBC3293FD8B855A4 /* MusicTheory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MusicTheory.swift; path = MusicTheory/MusicTheory.swift; sourceTree = "<group>"; };
+		1E7DC5B0C0486F0A8B0273E0C4A06E4E /* MusicTheorySwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MusicTheorySwift.xcconfig; sourceTree = "<group>"; };
+		25420570F3C4F9B9F902FAA441C7A0D0 /* Dataset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Dataset.swift; path = MusicTheory/Dataset.swift; sourceTree = "<group>"; };
+		2C9AAC5AFDA4464FE0265C0F59468BD7 /* MusicTheorySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MusicTheorySwift.framework; path = MusicTheorySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E1022F6B99EDD3B0EBE9AEFBB50896D /* MusicTheorySwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MusicTheorySwift-umbrella.h"; sourceTree = "<group>"; };
+		41DF807F7D7CDB40E1B36618D28E837B /* Pods-CircleOfFifths-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CircleOfFifths-umbrella.h"; sourceTree = "<group>"; };
+		51756CD89316915E5BB98A89EEEA9F2C /* MusicTheorySwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MusicTheorySwift-prefix.pch"; sourceTree = "<group>"; };
+		52AAF45E657AE2EE704EE205EA0FF622 /* MusicTheorySwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MusicTheorySwift.modulemap; sourceTree = "<group>"; };
+		557EBF9896C8D85306C73341F44A479B /* Pods-CircleOfFifths-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CircleOfFifths-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6E05E9421D92142C4F310CD8D664DF89 /* Pods-CircleOfFifths-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CircleOfFifths-dummy.m"; sourceTree = "<group>"; };
+		88B9AA6A9B239EEA5C9D6B11BB3D68D0 /* Pods-CircleOfFifths.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CircleOfFifths.modulemap"; sourceTree = "<group>"; };
+		8A5514F1DBCF9D517643EF85DDA2C176 /* Pods-CircleOfFifths-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CircleOfFifths-frameworks.sh"; sourceTree = "<group>"; };
+		8DDCD7BF3A89F1C2C8D21A4401634F88 /* Pods-CircleOfFifths-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CircleOfFifths-acknowledgements.plist"; sourceTree = "<group>"; };
+		8EF4E94BFF65A143FC7B6D61EED62765 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0CB7A8C745BDA171FF8624EEBF3E0DC /* Pods-CircleOfFifths.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CircleOfFifths.debug.xcconfig"; sourceTree = "<group>"; };
+		B41D11E70A051F315DAAA8644C6E2C77 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAD590ADC1F39AE8B7A015831358585C /* Pods-CircleOfFifths.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CircleOfFifths.release.xcconfig"; sourceTree = "<group>"; };
+		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		E4A9A5539825839ACCCC46D2E613DDF9 /* Pods-CircleOfFifths-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CircleOfFifths-resources.sh"; sourceTree = "<group>"; };
+		F78376E74CAF6132B7EA9FDC715B552C /* Pods_CircleOfFifths.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CircleOfFifths.framework; path = "Pods-CircleOfFifths.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2BDC0CF9B2B18BDA1239DDB73592EE76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				43897F72ACFDE130EF71338701D5C284 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FD4A94B83A96D1FCFD09D3DC95D2E2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0354CE35F43D17823EAF48B36F62265 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		43BCA5816751A0C9F86058C3B3CF42F3 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FFC5E16BEE132D0B8EC3474EA089BB53 /* Pods-CircleOfFifths */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		54D54558C6240EB701BF741BC2B5F5AD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8EF4E94BFF65A143FC7B6D61EED62765 /* Info.plist */,
+				52AAF45E657AE2EE704EE205EA0FF622 /* MusicTheorySwift.modulemap */,
+				1E7DC5B0C0486F0A8B0273E0C4A06E4E /* MusicTheorySwift.xcconfig */,
+				02A7C5A04988112AB00924AEDD1FB941 /* MusicTheorySwift-dummy.m */,
+				51756CD89316915E5BB98A89EEEA9F2C /* MusicTheorySwift-prefix.pch */,
+				3E1022F6B99EDD3B0EBE9AEFBB50896D /* MusicTheorySwift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MusicTheorySwift";
+			sourceTree = "<group>";
+		};
+		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				9EBED57DE8FEDB3A1599C30AC802AF54 /* Pods */,
+				A680E4C2A6A60C136C90128F61D8B0DE /* Products */,
+				43BCA5816751A0C9F86058C3B3CF42F3 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		9EBED57DE8FEDB3A1599C30AC802AF54 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B6A0279BB2BA1C395C8B1254EBD1CB3A /* MusicTheorySwift */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A680E4C2A6A60C136C90128F61D8B0DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C9AAC5AFDA4464FE0265C0F59468BD7 /* MusicTheorySwift.framework */,
+				F78376E74CAF6132B7EA9FDC715B552C /* Pods_CircleOfFifths.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B6A0279BB2BA1C395C8B1254EBD1CB3A /* MusicTheorySwift */ = {
+			isa = PBXGroup;
+			children = (
+				25420570F3C4F9B9F902FAA441C7A0D0 /* Dataset.swift */,
+				1860B19D4C679880DBC3293FD8B855A4 /* MusicTheory.swift */,
+				54D54558C6240EB701BF741BC2B5F5AD /* Support Files */,
+			);
+			name = MusicTheorySwift;
+			path = MusicTheorySwift;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFC5E16BEE132D0B8EC3474EA089BB53 /* Pods-CircleOfFifths */ = {
+			isa = PBXGroup;
+			children = (
+				B41D11E70A051F315DAAA8644C6E2C77 /* Info.plist */,
+				88B9AA6A9B239EEA5C9D6B11BB3D68D0 /* Pods-CircleOfFifths.modulemap */,
+				557EBF9896C8D85306C73341F44A479B /* Pods-CircleOfFifths-acknowledgements.markdown */,
+				8DDCD7BF3A89F1C2C8D21A4401634F88 /* Pods-CircleOfFifths-acknowledgements.plist */,
+				6E05E9421D92142C4F310CD8D664DF89 /* Pods-CircleOfFifths-dummy.m */,
+				8A5514F1DBCF9D517643EF85DDA2C176 /* Pods-CircleOfFifths-frameworks.sh */,
+				E4A9A5539825839ACCCC46D2E613DDF9 /* Pods-CircleOfFifths-resources.sh */,
+				41DF807F7D7CDB40E1B36618D28E837B /* Pods-CircleOfFifths-umbrella.h */,
+				A0CB7A8C745BDA171FF8624EEBF3E0DC /* Pods-CircleOfFifths.debug.xcconfig */,
+				CAD590ADC1F39AE8B7A015831358585C /* Pods-CircleOfFifths.release.xcconfig */,
+			);
+			name = "Pods-CircleOfFifths";
+			path = "Target Support Files/Pods-CircleOfFifths";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		25991DC325ACB542E2AD1DFF0ABE7764 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA9E9DDE74DB174648F25B32D66AD935 /* Pods-CircleOfFifths-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7E01DA2851FA4698BA3205BDD2F10E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				703AC1854DFE74DDEDA6DBFB933FC741 /* MusicTheorySwift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C53E26232A6E33F6BAD422FDAECFF921 /* MusicTheorySwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D093417850745257755CD29FFC288E0 /* Build configuration list for PBXNativeTarget "MusicTheorySwift" */;
+			buildPhases = (
+				9A955C8B4932C25EEB421F438B215AF4 /* Sources */,
+				2BDC0CF9B2B18BDA1239DDB73592EE76 /* Frameworks */,
+				F7E01DA2851FA4698BA3205BDD2F10E8 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MusicTheorySwift;
+			productName = MusicTheorySwift;
+			productReference = 2C9AAC5AFDA4464FE0265C0F59468BD7 /* MusicTheorySwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FDE5ABA410E5439F352A88A1E1CB37B1 /* Pods-CircleOfFifths */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F72E2F6C43BDDC0ADC948FCA4AA6FFE /* Build configuration list for PBXNativeTarget "Pods-CircleOfFifths" */;
+			buildPhases = (
+				683FDEB0B558ADE479B168FA4210417A /* Sources */,
+				5FD4A94B83A96D1FCFD09D3DC95D2E2B /* Frameworks */,
+				25991DC325ACB542E2AD1DFF0ABE7764 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C60E52A0C921480D22B1C4E16D3B749C /* PBXTargetDependency */,
+			);
+			name = "Pods-CircleOfFifths";
+			productName = "Pods-CircleOfFifths";
+			productReference = F78376E74CAF6132B7EA9FDC715B552C /* Pods_CircleOfFifths.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = A680E4C2A6A60C136C90128F61D8B0DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C53E26232A6E33F6BAD422FDAECFF921 /* MusicTheorySwift */,
+				FDE5ABA410E5439F352A88A1E1CB37B1 /* Pods-CircleOfFifths */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		683FDEB0B558ADE479B168FA4210417A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66FCFC3471411F5A047321C52FA2ECDA /* Pods-CircleOfFifths-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A955C8B4932C25EEB421F438B215AF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B6CF9C2BB82E9AD8B99CF1E97E2B0D1 /* Dataset.swift in Sources */,
+				1885F586D21F0A4E81931EC7A53A0ED9 /* MusicTheory.swift in Sources */,
+				FA2D5143E2CF45C4C48000FC3A242CA4 /* MusicTheorySwift-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C60E52A0C921480D22B1C4E16D3B749C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MusicTheorySwift;
+			target = C53E26232A6E33F6BAD422FDAECFF921 /* MusicTheorySwift */;
+			targetProxy = 9CC527A5C681EA76B5EF565FA4E9D421 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		24664C1152AB184A0F376C695C05A843 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E7DC5B0C0486F0A8B0273E0C4A06E4E /* MusicTheorySwift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MusicTheorySwift/MusicTheorySwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MusicTheorySwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MusicTheorySwift/MusicTheorySwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = MusicTheorySwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		673254EEAF0B5BF4596080C749645884 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7B6B1912B533080E64C57028A5859EDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E7DC5B0C0486F0A8B0273E0C4A06E4E /* MusicTheorySwift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MusicTheorySwift/MusicTheorySwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MusicTheorySwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MusicTheorySwift/MusicTheorySwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = MusicTheorySwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CB010A8C1C647AAB4A72A9B929CE7CCD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAD590ADC1F39AE8B7A015831358585C /* Pods-CircleOfFifths.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CircleOfFifths/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CircleOfFifths/Pods-CircleOfFifths.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CircleOfFifths;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CDE0EEF92E8CB7AC2DDEFAC25ECE51FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0CB7A8C745BDA171FF8624EEBF3E0DC /* Pods-CircleOfFifths.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CircleOfFifths/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CircleOfFifths/Pods-CircleOfFifths.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CircleOfFifths;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */,
+				673254EEAF0B5BF4596080C749645884 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D093417850745257755CD29FFC288E0 /* Build configuration list for PBXNativeTarget "MusicTheorySwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24664C1152AB184A0F376C695C05A843 /* Debug */,
+				7B6B1912B533080E64C57028A5859EDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F72E2F6C43BDDC0ADC948FCA4AA6FFE /* Build configuration list for PBXNativeTarget "Pods-CircleOfFifths" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDE0EEF92E8CB7AC2DDEFAC25ECE51FD /* Debug */,
+				CB010A8C1C647AAB4A72A9B929CE7CCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
