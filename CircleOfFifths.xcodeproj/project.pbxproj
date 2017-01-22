@@ -15,6 +15,7 @@
 		B274B0B71E30680100FFC7A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B274B0B51E30680100FFC7A3 /* LaunchScreen.storyboard */; };
 		B274B0C01E30686C00FFC7A3 /* PieChartLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B274B0BF1E30686C00FFC7A3 /* PieChartLayer.swift */; };
 		B274B0C21E3068BD00FFC7A3 /* CircleOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B274B0C11E3068BD00FFC7A3 /* CircleOfFifths.swift */; };
+		B274B1211E33F68D00FFC7A3 /* ArcTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B274B1201E33F68D00FFC7A3 /* ArcTextLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B274B0B81E30680100FFC7A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B274B0BF1E30686C00FFC7A3 /* PieChartLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartLayer.swift; sourceTree = "<group>"; };
 		B274B0C11E3068BD00FFC7A3 /* CircleOfFifths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleOfFifths.swift; sourceTree = "<group>"; };
+		B274B1201E33F68D00FFC7A3 /* ArcTextLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcTextLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				B274B0BF1E30686C00FFC7A3 /* PieChartLayer.swift */,
+				B274B1201E33F68D00FFC7A3 /* ArcTextLayer.swift */,
 				B274B0C11E3068BD00FFC7A3 /* CircleOfFifths.swift */,
 			);
 			path = CircleOfFifths;
@@ -230,6 +233,7 @@
 				B274B0C01E30686C00FFC7A3 /* PieChartLayer.swift in Sources */,
 				B274B0C21E3068BD00FFC7A3 /* CircleOfFifths.swift in Sources */,
 				B274B0AD1E30680100FFC7A3 /* AppDelegate.swift in Sources */,
+				B274B1211E33F68D00FFC7A3 /* ArcTextLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

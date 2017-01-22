@@ -100,6 +100,15 @@ public class CircleOfFifths: UIView {
   @IBInspectable public var majorColor: UIColor = .red { didSet { draw() }}
   @IBInspectable public var minorColor: UIColor = .blue { didSet { draw() }}
   @IBInspectable public var diminishedColor: UIColor = .green { didSet { draw() }}
+  @IBInspectable public var majorTextColor: UIColor = .white { didSet { draw() }}
+  @IBInspectable public var minorTextColor: UIColor = .white { didSet { draw() }}
+  @IBInspectable public var diminishedTextColor: UIColor = .white { didSet { draw() }}
+  @IBInspectable public var majorFontSize: CGFloat = 15 { didSet { draw() }}
+  @IBInspectable public var minorFontSize: CGFloat = 15 { didSet { draw() }}
+  @IBInspectable public var diminishedFontSize: CGFloat = 15 { didSet { draw() }}
+  @IBInspectable public var majorTextTreshold: CGFloat = 5 { didSet { draw() }}
+  @IBInspectable public var minorTextTreshold: CGFloat = 5 { didSet { draw() }}
+  @IBInspectable public var diminishedTextTreshold: CGFloat = 5 { didSet { draw() }}
 
   private var circle: [NoteType] = [.c, .g, .d, .a, .e, .b, .gFlat, .dFlat, .aFlat, .eFlat, .bFlat, .f]
   private var chords: [CircleChordType] = [.major, .major, .major, .minor, .minor, .minor, .diminished]
@@ -107,6 +116,9 @@ public class CircleOfFifths: UIView {
   private var chordPie: PieChartLayer?
   private var circlePie: PieChartLayer?
   private var selectedSlice: PieChartSlice?
+  private var majorArcText: ArcTextLayer?
+  private var minorArcText: ArcTextLayer?
+  private var dimArcText: ArcTextLayer?
 
   public override func draw(_ rect: CGRect) {
     super.draw(rect)
@@ -166,12 +178,22 @@ public class CircleOfFifths: UIView {
             ]))
       }))
 
+    majorArcText = ArcTextLayer()
+    minorArcText = ArcTextLayer()
+    dimArcText = ArcTextLayer()
+
     guard let chordPie = chordPie,
-      let circlePie = circlePie
+      let circlePie = circlePie,
+      let majorArcText = majorArcText,
+      let minorArcText = minorArcText,
+      let dimArcText = dimArcText
       else { return }
 
     layer.addSublayer(chordPie)
     layer.addSublayer(circlePie)
+    layer.addSublayer(majorArcText)
+    layer.addSublayer(minorArcText)
+    layer.addSublayer(dimArcText)
   }
 
   private func draw() {
@@ -179,20 +201,24 @@ public class CircleOfFifths: UIView {
       let circlePie = circlePie
       else { return }
 
+    // Set layer colors
     chordPie.strokeColor = chordPieLineColor.cgColor
     chordPie.lineWidth = chordPieLineWidth
     circlePie.strokeColor = circlePieLineColor.cgColor
     circlePie.lineWidth = circlePieLineWidth
 
+    // Set size
     let radius = max(0, min(frame.size.width, frame.size.height) / 2)
     chordPie.radius = radius
     circlePie.radius = max(0, radius - chordPieHeight)
 
+    // Set position
     let center = CGPoint(x: bounds.midX, y: bounds.midY)
     chordPie.center = center
     circlePie.center = center
     circlePie.labelPositionTreshold = textTreshold
-    
+
+    // Determine chord notes
     let rootNote = scale.key + scale.type.circleModeRootInterval
     var chordNotes = [NoteType]()
     for i in 0..<chords.count {
@@ -204,6 +230,7 @@ public class CircleOfFifths: UIView {
       }
     }
 
+    // Draw chord pie
     for (index, note) in circle.enumerated() {
       let noteSlice = circlePie.slices[index]
       if let noteIndex = chordNotes.index(of: note) {
@@ -215,5 +242,40 @@ public class CircleOfFifths: UIView {
         noteSlice.isEnabled = false
       }
     }
+
+    // Draw chord type over chord pie
+    let majorAngle = chordNotes[4].circleStartAngle + 15 - 90
+    let minorAngle = chordNotes[1].circleStartAngle + 15 - 90
+    let dimAngle = chordNotes[6].circleStartAngle + 15 - 90
+
+    majorArcText?.text = NSAttributedString(
+      string: "Major",
+      attributes: [
+        NSForegroundColorAttributeName: majorTextColor,
+        NSFontAttributeName: UIFont.systemFont(ofSize: majorFontSize)
+      ])
+    majorArcText?.angle = majorAngle
+    majorArcText?.radius = radius - majorTextTreshold
+    majorArcText?.frame = bounds
+
+    minorArcText?.text = NSAttributedString(
+      string: "Minor",
+      attributes: [
+        NSForegroundColorAttributeName: minorTextColor,
+        NSFontAttributeName: UIFont.systemFont(ofSize: minorFontSize)
+      ])
+    minorArcText?.angle = minorAngle
+    minorArcText?.radius = radius - minorTextTreshold
+    minorArcText?.frame = bounds
+
+    dimArcText?.text = NSAttributedString(
+      string: "Dim",
+      attributes: [
+        NSForegroundColorAttributeName: diminishedTextColor,
+        NSFontAttributeName: UIFont.systemFont(ofSize: diminishedFontSize)
+      ])
+    dimArcText?.angle = dimAngle
+    dimArcText?.radius = radius - diminishedTextTreshold
+    dimArcText?.frame = bounds
   }
 }
