@@ -723,6 +723,12 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="minorTextTreshold">
                                         <real key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="intervalPieHeight">
+                                        <real key="value" value="45"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="intervalFontSize">
+                                        <real key="value" value="13"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </customView>
                         </subviews>

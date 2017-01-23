@@ -71,6 +71,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="diminishedTextTreshold">
                                         <real key="value" value="7"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="intervalPieHeight">
+                                        <real key="value" value="70"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
