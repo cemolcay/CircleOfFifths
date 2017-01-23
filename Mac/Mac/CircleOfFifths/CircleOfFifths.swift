@@ -317,6 +317,13 @@ public class CircleOfFifths: UIView {
     dimArcText?.angle = dimAngle
     dimArcText?.radius = radius - diminishedTextTreshold
     dimArcText?.frame = bounds
+
+    chordPie.setNeedsDisplay()
+    circlePie.setNeedsDisplay()
+    intervalPie.setNeedsDisplay()
+    majorArcText?.setNeedsDisplay()
+    minorArcText?.setNeedsDisplay()
+    dimArcText?.setNeedsDisplay()
   }
 
   private func toRomanInterval(note: NoteType, chordMode: CircleChordType) -> String {

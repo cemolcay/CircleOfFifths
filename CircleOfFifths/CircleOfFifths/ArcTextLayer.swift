@@ -14,6 +14,11 @@ public class ArcTextLayer: CALayer {
   public var radius: CGFloat = 0
   private var textLayers = [CATextLayer]()
 
+  public override func draw(in ctx: CGContext) {
+    super.draw(in: ctx)
+    draw()
+  }
+  
   public override func layoutSublayers() {
     super.layoutSublayers()
     draw()
@@ -80,7 +85,10 @@ public class ArcTextLayer: CALayer {
           y: (frame.size.height / 2) - (charSize.height / 2) + y,
           width: charSize.width,
           height: charSize.height))
+
       addSublayer(singleChar)
+      textLayers.append(singleChar)
+
       singleChar.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: radAngle - textRotation))
       radAngle += letterAngle
     }

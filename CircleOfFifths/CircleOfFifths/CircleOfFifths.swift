@@ -109,7 +109,7 @@ public class CircleOfFifths: UIView {
   @IBInspectable public var majorTextTreshold: CGFloat = 5 { didSet { draw() }}
   @IBInspectable public var minorTextTreshold: CGFloat = 5 { didSet { draw() }}
   @IBInspectable public var diminishedTextTreshold: CGFloat = 5 { didSet { draw() }}
-  @IBInspectable public var intervalPieHeight: CGFloat = 10 { didSet { draw() }}
+  @IBInspectable public var intervalPieHeight: CGFloat = 50 { didSet { draw() }}
   @IBInspectable public var intervalFontSize: CGFloat = 15 { didSet { draw() }}
   @IBInspectable public var intervalTextTreshold: CGFloat = 15 { didSet { draw() }}
 
@@ -310,6 +310,13 @@ public class CircleOfFifths: UIView {
     dimArcText?.angle = dimAngle
     dimArcText?.radius = radius - diminishedTextTreshold
     dimArcText?.frame = bounds
+
+    chordPie.setNeedsDisplay()
+    circlePie.setNeedsDisplay()
+    intervalPie.setNeedsDisplay()
+    majorArcText?.setNeedsDisplay()
+    minorArcText?.setNeedsDisplay()
+    dimArcText?.setNeedsDisplay()
   }
 
   private func toRomanInterval(note: NoteType, chordMode: CircleChordType) -> String {

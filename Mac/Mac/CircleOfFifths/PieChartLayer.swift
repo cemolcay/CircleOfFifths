@@ -81,7 +81,13 @@ public class PieChartLayer: CAShapeLayer {
     setup()
   }
 
+  public override func draw(in ctx: CGContext) {
+    super.draw(in: ctx)
+    draw()
+  }
+
   public override func layoutSublayers() {
+    super.layoutSublayers()
     draw()
   }
 
