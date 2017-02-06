@@ -3,14 +3,12 @@
 
 workspace 'CircleOfFifths'
 
-target 'CircleOfFifths' do
-  project 'CircleOfFifths.xcproj'
+target 'CircleOfFifths iOS' do
   use_frameworks!
   pod 'MusicTheorySwift'
 end
 
-target 'Mac' do
-  project 'Mac/Mac.xcproj'
+target 'CircleOfFifths macOS' do
   use_frameworks!
   pod 'MusicTheorySwift'
 end
