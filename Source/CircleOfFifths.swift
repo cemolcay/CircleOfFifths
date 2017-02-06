@@ -305,6 +305,16 @@ public class CircleOfFifths: CRView {
     intervalPie.center = center
     intervalPie.labelPositionTreshold = intervalTextTreshold
 
+    // Set font
+    circlePie.slices.forEach({
+      $0.attributedString = NSAttributedString(
+        string: $0.attributedString?.string ?? "",
+        attributes: [
+          NSForegroundColorAttributeName: textColor,
+          NSFontAttributeName: CRFont.boldSystemFont(ofSize: fontSize)
+        ])
+    })
+
     // Determine chord notes
     let rootNote = scale.key + scale.type.circleModeRootInterval
     var chordNotes = [NoteType]()

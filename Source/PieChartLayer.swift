@@ -96,6 +96,14 @@ public class PieChartLayer: CAShapeLayer {
     setup()
   }
 
+  public override init(layer: Any) {
+    radius = 0
+    center = .zero
+    slices = []
+    super.init(layer: layer)
+    setup()
+  }
+
   public override func draw(in ctx: CGContext) {
     super.draw(in: ctx)
     draw()
