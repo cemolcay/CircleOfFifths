@@ -43,7 +43,7 @@ public class PieChartSlice {
   public var color: CRColor
   public var highlightedColor: CRColor
   public var disabledColor: CRColor
-  public var textLayer: CATextLayer
+  fileprivate var textLayer: CATextLayer
   public var attributedString: NSAttributedString?
 
   public var isEnabled: Bool = true
@@ -67,9 +67,14 @@ public class PieChartSlice {
 }
 
 public class PieChartLayer: CAShapeLayer {
-  public var slices: [PieChartSlice]
-  public var center: CGPoint
-  public var radius: CGFloat
+  public var slices = [PieChartSlice]()
+  public var center: CGPoint = .zero
+  public var radius: CGFloat = 0 {
+    didSet {
+      frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
+    }
+  }
+
   public var labelPositionTreshold: CGFloat = 10
 
   #if os(OSX)
@@ -80,34 +85,27 @@ public class PieChartLayer: CAShapeLayer {
 
   private var sliceLayers = [CAShapeLayer]()
 
+  // MARK: Init
+
   public init(radius: CGFloat, center: CGPoint, slices: [PieChartSlice]) {
+    super.init()
     self.radius = radius
     self.center = center
     self.slices = slices
-    super.init()
     setup()
   }
 
   public required init?(coder aDecoder: NSCoder) {
-    radius = 0
-    center = .zero
-    slices = []
     super.init(coder: aDecoder)
     setup()
   }
 
   public override init(layer: Any) {
-    radius = 0
-    center = .zero
-    slices = []
     super.init(layer: layer)
     setup()
   }
 
-  public override func draw(in ctx: CGContext) {
-    super.draw(in: ctx)
-    draw()
-  }
+ // MARK: Draw
 
   public override func layoutSublayers() {
     super.layoutSublayers()
@@ -128,8 +126,6 @@ public class PieChartLayer: CAShapeLayer {
   }
 
   private func draw() {
-    frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
-
     for (index, sliceLayer) in sliceLayers.enumerated() {
       let slice = slices[index]
 

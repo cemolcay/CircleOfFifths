@@ -137,33 +137,33 @@ internal enum CircleChordType {
 
 @IBDesignable
 public class CircleOfFifths: CRView {
-  public var scale = Scale(type: .minor, key: .c) { didSet { draw() }}
-  @IBInspectable public var defaultColor: CRColor = .white { didSet { draw() }}
-  @IBInspectable public var highlightedColor: CRColor = .red { didSet { draw() }}
-  @IBInspectable public var disabledColor: CRColor = .lightGray { didSet { draw() }}
-  @IBInspectable public var fontSize: CGFloat = 15 { didSet { draw() }}
-  @IBInspectable public var textColor: CRColor = .black { didSet { draw() }}
-  @IBInspectable public var textTreshold: CGFloat = 10  { didSet { draw() }}
-  @IBInspectable public var chordPieHeight: CGFloat = 10 { didSet { draw() }}
-  @IBInspectable public var chordPieLineColor: CRColor = .black { didSet { draw() }}
-  @IBInspectable public var chordPieLineWidth: CGFloat = 1 { didSet { draw() }}
-  @IBInspectable public var circlePieLineColor: CRColor = .black { didSet { draw() }}
-  @IBInspectable public var circlePieLineWidth: CGFloat = 1 { didSet { draw() }}
-  @IBInspectable public var majorColor: CRColor = .red { didSet { draw() }}
-  @IBInspectable public var minorColor: CRColor = .blue { didSet { draw() }}
-  @IBInspectable public var diminishedColor: CRColor = .green { didSet { draw() }}
-  @IBInspectable public var majorTextColor: CRColor = .black { didSet { draw() }}
-  @IBInspectable public var minorTextColor: CRColor = .black { didSet { draw() }}
-  @IBInspectable public var diminishedTextColor: CRColor = .black { didSet { draw() }}
-  @IBInspectable public var majorFontSize: CGFloat = 15 { didSet { draw() }}
-  @IBInspectable public var minorFontSize: CGFloat = 15 { didSet { draw() }}
-  @IBInspectable public var diminishedFontSize: CGFloat = 15 { didSet { draw() }}
-  @IBInspectable public var majorTextTreshold: CGFloat = 5 { didSet { draw() }}
-  @IBInspectable public var minorTextTreshold: CGFloat = 5 { didSet { draw() }}
-  @IBInspectable public var diminishedTextTreshold: CGFloat = 5 { didSet { draw() }}
-  @IBInspectable public var intervalPieHeight: CGFloat = 10 { didSet { draw() }}
-  @IBInspectable public var intervalFontSize: CGFloat = 15 { didSet { draw() }}
-  @IBInspectable public var intervalTextTreshold: CGFloat = 15 { didSet { draw() }}
+  public var scale = Scale(type: .minor, key: .c) { didSet { redraw() }}
+  @IBInspectable public var defaultColor: CRColor = .white { didSet { redraw() }}
+  @IBInspectable public var highlightedColor: CRColor = .red { didSet { redraw() }}
+  @IBInspectable public var disabledColor: CRColor = .lightGray { didSet { redraw() }}
+  @IBInspectable public var fontSize: CGFloat = 15 { didSet { redraw() }}
+  @IBInspectable public var textColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var textTreshold: CGFloat = 10  { didSet { redraw() }}
+  @IBInspectable public var chordPieHeight: CGFloat = 10 { didSet { redraw() }}
+  @IBInspectable public var chordPieLineColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var chordPieLineWidth: CGFloat = 1 { didSet { redraw() }}
+  @IBInspectable public var circlePieLineColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var circlePieLineWidth: CGFloat = 1 { didSet { redraw() }}
+  @IBInspectable public var majorColor: CRColor = .red { didSet { redraw() }}
+  @IBInspectable public var minorColor: CRColor = .blue { didSet { redraw() }}
+  @IBInspectable public var diminishedColor: CRColor = .green { didSet { redraw() }}
+  @IBInspectable public var majorTextColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var minorTextColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var diminishedTextColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var majorFontSize: CGFloat = 15 { didSet { redraw() }}
+  @IBInspectable public var minorFontSize: CGFloat = 15 { didSet { redraw() }}
+  @IBInspectable public var diminishedFontSize: CGFloat = 15 { didSet { redraw() }}
+  @IBInspectable public var majorTextTreshold: CGFloat = 5 { didSet { redraw() }}
+  @IBInspectable public var minorTextTreshold: CGFloat = 5 { didSet { redraw() }}
+  @IBInspectable public var diminishedTextTreshold: CGFloat = 5 { didSet { redraw() }}
+  @IBInspectable public var intervalPieHeight: CGFloat = 10 { didSet { redraw() }}
+  @IBInspectable public var intervalFontSize: CGFloat = 15 { didSet { redraw() }}
+  @IBInspectable public var intervalTextTreshold: CGFloat = 15 { didSet { redraw() }}
 
   private var circle: [NoteType] = [.c, .g, .d, .a, .e, .b, .gFlat, .dFlat, .aFlat, .eFlat, .bFlat, .f]
   private var chords: [CircleChordType] = [.major, .major, .major, .minor, .minor, .minor, .diminished]
@@ -176,27 +176,9 @@ public class CircleOfFifths: CRView {
   private var minorArcText: ArcTextLayer?
   private var dimArcText: ArcTextLayer?
 
-  #if os(OSX)
-    public override func draw(_ dirtyRect: NSRect) {
-    super.draw(dirtyRect)
-    draw()
-  }
-  #elseif os(iOS)
-    public override func draw(_ rect: CGRect) {
-      super.draw(rect)
-      draw()
-    }
-  #endif
+  private var shouldRedraw = true
 
-  public func selectNote(note: NoteType?) {
-    selectedSlice?.isSelected = false
-    guard let note = note,
-      let slice = circlePie?.slices[note.circleIndex]
-      else { return }
-    slice.isSelected = true
-    selectedSlice = slice
-    circlePie?.layoutSublayers()
-  }
+  // MARK: Setup
 
   private func setup() {
     let center = CGPoint(x: bounds.midX, y: bounds.midY)
@@ -273,6 +255,32 @@ public class CircleOfFifths: CRView {
     layer.addSublayer(dimArcText)
   }
 
+  // MARK: Selection
+
+  public func selectNote(note: NoteType?) {
+    selectedSlice?.isSelected = false
+    guard let note = note,
+      let slice = circlePie?.slices[note.circleIndex]
+      else { return }
+    slice.isSelected = true
+    selectedSlice = slice
+    circlePie?.layoutSublayers()
+  }
+
+  // MARK: Draw
+
+  #if os(OSX)
+  public override func layout() {
+      super.layout()
+      draw()
+    }
+  #elseif os(iOS)
+    public override func layoutSubviews() {
+      super.layoutSubviews()
+      draw()
+    }
+  #endif
+
   private func draw() {
     if chordPie == nil || circlePie == nil {
       setup()
@@ -290,12 +298,6 @@ public class CircleOfFifths: CRView {
     circlePie.lineWidth = circlePieLineWidth
     intervalPie.strokeColor = circlePieLineColor.cgColor
     intervalPie.lineWidth = circlePieLineWidth
-
-    // Set size
-    let radius = max(0, min(frame.size.width, frame.size.height) / 2)
-    chordPie.radius = radius
-    circlePie.radius = max(0, radius - chordPieHeight)
-    intervalPie.radius = max(0, intervalPieHeight)
 
     // Set position
     let center = CGPoint(x: bounds.midX, y: bounds.midY)
@@ -351,6 +353,13 @@ public class CircleOfFifths: CRView {
       }
     }
 
+    // Set size
+    let radius = max(0, min(frame.size.width, frame.size.height) / 2)
+    chordPie.radius = radius
+    circlePie.radius = max(0, radius - chordPieHeight)
+    intervalPie.radius = max(0, intervalPieHeight)
+
+
     // Draw chord type over chord pie
     #if os(OSX)
       let majorAngle = chordNotes[1].circleStartAngle + 15 + 90
@@ -391,13 +400,6 @@ public class CircleOfFifths: CRView {
     dimArcText?.angle = dimAngle
     dimArcText?.radius = radius - diminishedTextTreshold
     dimArcText?.frame = bounds
-
-    chordPie.setNeedsDisplay()
-    circlePie.setNeedsDisplay()
-    intervalPie.setNeedsDisplay()
-    majorArcText?.setNeedsDisplay()
-    minorArcText?.setNeedsDisplay()
-    dimArcText?.setNeedsDisplay()
   }
 
   private func toRomanInterval(note: NoteType, chordMode: CircleChordType) -> String {
@@ -421,5 +423,22 @@ public class CircleOfFifths: CRView {
     case .diminished: return "\(roman)°"
     default: return roman
     }
+  }
+
+  // MARK: Redraw
+
+  public func update(with block: @escaping (CircleOfFifths) -> Void) {
+    shouldRedraw = false
+    block(self)
+    shouldRedraw = true
+    redraw()
+  }
+
+  private func redraw() {
+    guard shouldRedraw else { return }
+    #if os(OSX)
+      guard let layer = layer else { return }
+    #endif
+    layer.setNeedsDisplay()
   }
 }

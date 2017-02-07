@@ -13,34 +13,50 @@
 #endif
 
 public class ArcTextLayer: CALayer {
-  public var text: NSAttributedString? = nil
   public var angle: CGFloat = 0
   public var radius: CGFloat = 0
-  private var textLayers = [CATextLayer]()
-
-  public override func draw(in ctx: CGContext) {
-    super.draw(in: ctx)
-    draw()
+  public var text: NSAttributedString? = nil {
+    didSet {
+      setup()
+    }
   }
+  private var textLayers = [CATextLayer]()
 
   public override func layoutSublayers() {
     super.layoutSublayers()
     draw()
   }
 
-  private func draw() {
+  private func setup() {
+    guard let text = self.text else { return }
+
     for textLayer in textLayers {
       textLayer.removeFromSuperlayer()
     }
     textLayers = []
 
-    drawCurvedString(
-      text: text ?? NSAttributedString(string: ""),
-      angle: angle,
-      radius: radius)
+    for c in 0..<text.length {
+      let textLayer = CATextLayer()
+      textLayer.string = text.attributedSubstring(from: NSRange(c..<c+1))
+      textLayer.alignmentMode = kCAAlignmentCenter
+      textLayer.actions = ["position": NSNull() as CAAction]
+      #if os(OSX)
+        textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
+      #elseif os(iOS)
+        textLayer.contentsScale = UIScreen.main.scale
+      #endif
+
+      addSublayer(textLayer)
+      textLayers.append(textLayer)
+    }
   }
 
-  private func drawCurvedString(text: NSAttributedString, angle: CGFloat, radius: CGFloat) {
+  private func draw() {
+    guard let text = self.text else { return }
+    if !text.string.isEmpty, textLayers.isEmpty {
+      setup()
+    }
+
     var radAngle = toRadians(angle: angle)
 
     let textSize = text.boundingRect(
@@ -80,8 +96,8 @@ public class ArcTextLayer: CALayer {
       #endif
     }
 
-    for c in 0..<text.length {
-      let letter = text.attributedSubstring(from: NSRange(c..<c+1))
+    for textLayer in textLayers {
+      let letter = textLayer.string as! NSAttributedString
       let charSize = letter.boundingRect(
         with: CGSize(width: .max, height: .max),
         options: [.usesLineFragmentOrigin, .usesFontLeading],
@@ -93,35 +109,14 @@ public class ArcTextLayer: CALayer {
       let x = radius * cos(radAngle + (letterAngle / 2))
       let y = radius * sin(radAngle + (letterAngle / 2))
 
-      let singleChar = drawText(
-        on: self,
-        text: letter,
-        frame: CGRect(
-          x: (frame.size.width / 2) - (charSize.width / 2) + x,
-          y: (frame.size.height / 2) - (charSize.height / 2) + y,
-          width: charSize.width,
-          height: charSize.height))
-
-      addSublayer(singleChar)
-      textLayers.append(singleChar)
-
-      singleChar.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: radAngle - textRotation))
+      textLayer.frame = CGRect(
+        x: (frame.size.width / 2) - (charSize.width / 2) + x,
+        y: (frame.size.height / 2) - (charSize.height / 2) + y,
+        width: charSize.width,
+        height: charSize.height)
+      textLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: radAngle - textRotation))
       radAngle += letterAngle
     }
-  }
-
-  private func drawText(on layer: CALayer, text: NSAttributedString, frame: CGRect) -> CATextLayer {
-    let textLayer = CATextLayer()
-    textLayer.frame = frame
-    textLayer.string = text
-    textLayer.alignmentMode = kCAAlignmentCenter
-    textLayer.actions = ["position": NSNull() as CAAction]
-    #if os(OSX)
-      textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
-    #elseif os(iOS)
-      textLayer.contentsScale = UIScreen.main.scale
-    #endif
-    return textLayer
   }
 
   private func toRadians(angle: CGFloat) -> CGFloat {
