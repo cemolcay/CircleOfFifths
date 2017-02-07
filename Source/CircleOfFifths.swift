@@ -138,23 +138,60 @@ internal enum CircleChordType {
 @IBDesignable
 public class CircleOfFifths: CRView {
   public var scale = Scale(type: .minor, key: .c) { didSet { redraw() }}
-  @IBInspectable public var defaultColor: CRColor = .white { didSet { redraw() }}
-  @IBInspectable public var highlightedColor: CRColor = .red { didSet { redraw() }}
-  @IBInspectable public var disabledColor: CRColor = .lightGray { didSet { redraw() }}
+
+  #if os(OSX)
+    @IBInspectable public var defaultColor: NSColor = .white { didSet { redraw() }}
+    @IBInspectable public var highlightedColor: NSColor = .red { didSet { redraw() }}
+    @IBInspectable public var disabledColor: NSColor = .lightGray { didSet { redraw() }}
+  #elseif os(iOS)
+    @IBInspectable public var defaultColor: UIColor = .white { didSet { redraw() }}
+    @IBInspectable public var highlightedColor: UIColor = .red { didSet { redraw() }}
+    @IBInspectable public var disabledColor: UIColor = .lightGray { didSet { redraw() }}
+  #endif
+
   @IBInspectable public var fontSize: CGFloat = 15 { didSet { redraw() }}
-  @IBInspectable public var textColor: CRColor = .black { didSet { redraw() }}
+
+  #if os(OSX)
+    @IBInspectable public var textColor: NSColor = .black { didSet { redraw() }}
+  #elseif os(iOS)
+    @IBInspectable public var textColor: UIColor = .black { didSet { redraw() }}
+  #endif
+
   @IBInspectable public var textTreshold: CGFloat = 10  { didSet { redraw() }}
   @IBInspectable public var chordPieHeight: CGFloat = 10 { didSet { redraw() }}
-  @IBInspectable public var chordPieLineColor: CRColor = .black { didSet { redraw() }}
+
+  #if os(OSX)
+    @IBInspectable public var chordPieLineColor: NSColor = .black { didSet { redraw() }}
+  #elseif os(iOS)
+    @IBInspectable public var chordPieLineColor: UIColor = .black { didSet { redraw() }}
+  #endif
+
   @IBInspectable public var chordPieLineWidth: CGFloat = 1 { didSet { redraw() }}
-  @IBInspectable public var circlePieLineColor: CRColor = .black { didSet { redraw() }}
+
+  #if os(OSX)
+    @IBInspectable public var circlePieLineColor: NSColor = .black { didSet { redraw() }}
+  #elseif os(iOS)
+    @IBInspectable public var circlePieLineColor: UIColor = .black { didSet { redraw() }}
+  #endif
+
   @IBInspectable public var circlePieLineWidth: CGFloat = 1 { didSet { redraw() }}
-  @IBInspectable public var majorColor: CRColor = .red { didSet { redraw() }}
-  @IBInspectable public var minorColor: CRColor = .blue { didSet { redraw() }}
-  @IBInspectable public var diminishedColor: CRColor = .green { didSet { redraw() }}
-  @IBInspectable public var majorTextColor: CRColor = .black { didSet { redraw() }}
-  @IBInspectable public var minorTextColor: CRColor = .black { didSet { redraw() }}
-  @IBInspectable public var diminishedTextColor: CRColor = .black { didSet { redraw() }}
+
+  #if os(OSX)
+    @IBInspectable public var majorColor: NSColor = .red { didSet { redraw() }}
+    @IBInspectable public var minorColor: NSColor = .blue { didSet { redraw() }}
+    @IBInspectable public var diminishedColor: NSColor = .green { didSet { redraw() }}
+    @IBInspectable public var majorTextColor: NSColor = .black { didSet { redraw() }}
+    @IBInspectable public var minorTextColor: NSColor = .black { didSet { redraw() }}
+    @IBInspectable public var diminishedTextColor: NSColor = .black { didSet { redraw() }}
+  #elseif os(iOS)
+    @IBInspectable public var majorColor: UIColor = .red { didSet { redraw() }}
+    @IBInspectable public var minorColor: UIColor = .blue { didSet { redraw() }}
+    @IBInspectable public var diminishedColor: UIColor = .green { didSet { redraw() }}
+    @IBInspectable public var majorTextColor: UIColor = .black { didSet { redraw() }}
+    @IBInspectable public var minorTextColor: UIColor = .black { didSet { redraw() }}
+    @IBInspectable public var diminishedTextColor: UIColor = .black { didSet { redraw() }}
+  #endif
+
   @IBInspectable public var majorFontSize: CGFloat = 15 { didSet { redraw() }}
   @IBInspectable public var minorFontSize: CGFloat = 15 { didSet { redraw() }}
   @IBInspectable public var diminishedFontSize: CGFloat = 15 { didSet { redraw() }}
@@ -178,6 +215,26 @@ public class CircleOfFifths: CRView {
 
   private var shouldRedraw = true
 
+  // MARK: Init
+
+  #if os(OSX)
+    public required init?(coder: NSCoder) {
+      super.init(coder: coder)
+    }
+
+    public override init(frame frameRect: NSRect) {
+      super.init(frame: frameRect)
+    }
+  #elseif os(iOS)
+    public required init?(coder aDecoder: NSCoder) {
+      super.init(coder: aDecoder)
+    }
+
+    public override init(frame: CGRect) {
+      super.init(frame: frame)
+    }
+  #endif
+  
   // MARK: Setup
 
   private func setup() {
@@ -270,10 +327,10 @@ public class CircleOfFifths: CRView {
   // MARK: Draw
 
   #if os(OSX)
-  public override func layout() {
-      super.layout()
-      draw()
-    }
+    public override func layout() {
+        super.layout()
+        draw()
+      }
   #elseif os(iOS)
     public override func layoutSubviews() {
       super.layoutSubviews()

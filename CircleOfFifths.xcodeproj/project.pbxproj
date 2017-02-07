@@ -12,10 +12,9 @@
 		B29529631E49106B0022EF24 /* ArcTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295C1E49106B0022EF24 /* ArcTextLayer.swift */; };
 		B29529641E49106B0022EF24 /* CircleOfFifths.h in Headers */ = {isa = PBXBuildFile; fileRef = B295295D1E49106B0022EF24 /* CircleOfFifths.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B29529651E49106B0022EF24 /* CircleOfFifths.h in Headers */ = {isa = PBXBuildFile; fileRef = B295295D1E49106B0022EF24 /* CircleOfFifths.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B29529661E49106B0022EF24 /* CircleOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295E1E49106B0022EF24 /* CircleOfFifths.swift */; };
-		B29529671E49106B0022EF24 /* CircleOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295E1E49106B0022EF24 /* CircleOfFifths.swift */; };
 		B295296C1E49106B0022EF24 /* PieChartLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29529611E49106B0022EF24 /* PieChartLayer.swift */; };
 		B295296D1E49106B0022EF24 /* PieChartLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29529611E49106B0022EF24 /* PieChartLayer.swift */; };
+		B2AA08751E4A7D7400A7F0F7 /* CircleOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295E1E49106B0022EF24 /* CircleOfFifths.swift */; };
 		BB875D0D155146075DEF0503 /* Pods_CircleOfFifths_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5D7A2ACF11C40CFB3E8E35 /* Pods_CircleOfFifths_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -295,8 +294,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B29529661E49106B0022EF24 /* CircleOfFifths.swift in Sources */,
 				B295296C1E49106B0022EF24 /* PieChartLayer.swift in Sources */,
+				B2AA08751E4A7D7400A7F0F7 /* CircleOfFifths.swift in Sources */,
 				B29529621E49106B0022EF24 /* ArcTextLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +304,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B29529671E49106B0022EF24 /* CircleOfFifths.swift in Sources */,
 				B295296D1E49106B0022EF24 /* PieChartLayer.swift in Sources */,
 				B29529631E49106B0022EF24 /* ArcTextLayer.swift in Sources */,
 			);
@@ -598,6 +596,7 @@
 				B295294D1E490FE80022EF24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B29529581E490FF70022EF24 /* Build configuration list for PBXNativeTarget "CircleOfFifths macOS" */ = {
 			isa = XCConfigurationList;
@@ -606,6 +605,7 @@
 				B295295A1E490FF70022EF24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
