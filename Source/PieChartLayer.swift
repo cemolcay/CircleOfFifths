@@ -58,6 +58,7 @@ public class PieChartSlice {
     self.attributedString = attributedString
     textLayer = CATextLayer()
     textLayer.actions = ["position": NSNull() as CAAction]
+    textLayer.alignmentMode = kCAAlignmentCenter
     #if os(OSX)
       textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
     #elseif os(iOS)
@@ -69,11 +70,7 @@ public class PieChartSlice {
 public class PieChartLayer: CAShapeLayer {
   public var slices = [PieChartSlice]()
   public var center: CGPoint = .zero
-  public var radius: CGFloat = 0 {
-    didSet {
-      frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
-    }
-  }
+  public var radius: CGFloat = 0
 
   public var labelPositionTreshold: CGFloat = 10
 
@@ -114,6 +111,7 @@ public class PieChartLayer: CAShapeLayer {
 
   private func setup() {
     for sliceLayer in sliceLayers {
+      sliceLayer.sublayers?.forEach({ $0.removeFromSuperlayer() })
       sliceLayer.removeFromSuperlayer()
     }
 
@@ -126,6 +124,8 @@ public class PieChartLayer: CAShapeLayer {
   }
 
   private func draw() {
+    frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
+
     for (index, sliceLayer) in sliceLayers.enumerated() {
       let slice = slices[index]
 
@@ -158,9 +158,15 @@ public class PieChartLayer: CAShapeLayer {
 
       // text layer
       slice.textLayer.string = slice.attributedString
-      slice.textLayer.alignmentMode = kCAAlignmentCenter
 
-      // size
+      // text position
+      let teta = toRadians(angle: (slice.endAngle + slice.startAngle + (angleTreshold * 2)) / 2)
+      let d = radius - labelPositionTreshold
+      let x = center.x + (d * cos(teta))
+      let y = center.y + (d * sin(teta))
+      slice.textLayer.position = CGPoint(x: x, y: y)
+
+      // text frame
       if let att = slice.attributedString {
         slice.textLayer.frame.size = att.boundingRect(
           with: CGSize(width: .max, height: .max),
@@ -169,13 +175,6 @@ public class PieChartLayer: CAShapeLayer {
       } else {
         slice.textLayer.frame.size = .zero
       }
-
-      // position
-      let teta = toRadians(angle: (slice.endAngle + slice.startAngle + (angleTreshold * 2)) / 2)
-      let d = radius - labelPositionTreshold
-      let x = center.x + (d * cos(teta))
-      let y = center.y + (d * sin(teta))
-      slice.textLayer.position = CGPoint(x: x, y: y)
     }
   }
 

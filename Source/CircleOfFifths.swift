@@ -359,6 +359,9 @@ public class CircleOfFifths: CRView {
     circlePie.radius = max(0, radius - chordPieHeight)
     intervalPie.radius = max(0, intervalPieHeight)
 
+    chordPie.setNeedsLayout()
+    circlePie.setNeedsLayout()
+    intervalPie.setNeedsLayout()
 
     // Draw chord type over chord pie
     #if os(OSX)
@@ -437,8 +440,9 @@ public class CircleOfFifths: CRView {
   private func redraw() {
     guard shouldRedraw else { return }
     #if os(OSX)
-      guard let layer = layer else { return }
+      needsLayout = true
+    #elseif os(iOS)
+      layoutIfNeeded()
     #endif
-    layer.setNeedsDisplay()
   }
 }
