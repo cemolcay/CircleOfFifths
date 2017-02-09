@@ -1,0 +1,19 @@
+PODS:
+  - CircleOfFifths (0.0.1):
+    - MusicTheorySwift
+  - MusicTheorySwift (0.0.3)
+
+DEPENDENCIES:
+  - CircleOfFifths (from `../`)
+
+EXTERNAL SOURCES:
+  CircleOfFifths:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CircleOfFifths: 044c7f3a58e2f5d302753bba7ecd1e276f11b38f
+  MusicTheorySwift: 8003df1bf5a905120629378712156ceebebfc7d5
+
+PODFILE CHECKSUM: 23fa907480a6f9f5480bd36a051b2114535a1347
+
+COCOAPODS: 1.2.0
