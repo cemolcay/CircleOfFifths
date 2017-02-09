@@ -11,7 +11,7 @@ Requirements
 * Swift 3+
 * iOS 8.0+
 * tvOS 9.0+
-* macOS 10.9+
+* macOS 10.11+
 
 Install
 ----
