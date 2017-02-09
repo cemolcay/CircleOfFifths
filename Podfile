@@ -12,3 +12,8 @@ target 'CircleOfFifths macOS' do
   use_frameworks!
   pod 'MusicTheorySwift'
 end
+
+target 'CircleOfFifths TV' do
+  use_frameworks!
+  pod 'MusicTheorySwift'
+end

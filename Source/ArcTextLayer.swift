@@ -8,7 +8,7 @@
 
 #if os(OSX)
   import AppKit
-#elseif os(iOS)
+#elseif os(iOS) || os(tvOS)
   import UIKit
 #endif
 
@@ -42,7 +42,7 @@ public class ArcTextLayer: CALayer {
       textLayer.actions = ["position": NSNull() as CAAction]
       #if os(OSX)
         textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
-      #elseif os(iOS)
+      #elseif os(iOS) || os(tvOS)
         textLayer.contentsScale = UIScreen.main.scale
       #endif
 
@@ -78,7 +78,7 @@ public class ArcTextLayer: CALayer {
         textRotation = 1.5 * .pi
         textDirection = 2 * .pi
         radAngle -= textAngle / 2
-      #elseif os(iOS)
+      #elseif os(iOS) || os(tvOS)
         textRotation = 0.5 * .pi
         textDirection = -2 * .pi
         radAngle += textAngle / 2
@@ -89,7 +89,7 @@ public class ArcTextLayer: CALayer {
         textRotation = 0.5 * .pi
         textDirection = -2 * .pi
         radAngle += textAngle / 2
-      #elseif os(iOS)
+      #elseif os(iOS) || os(tvOS)
         textRotation = 1.5 * .pi
         textDirection = 2 * .pi
         radAngle -= textAngle / 2

@@ -11,7 +11,11 @@ import Cocoa
 class ViewController: NSViewController {
 
   override func viewDidLoad() {
-    super.viewDidLoad()
+    if #available(OSX 10.10, *) {
+      super.viewDidLoad()
+    } else {
+      // Fallback on earlier versions
+    }
 
     // Do any additional setup after loading the view.
   }

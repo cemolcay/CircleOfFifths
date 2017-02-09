@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "CircleOfFifths"
   s.version      = "0.0.1"
-  s.summary      = "A short description of CircleOfFifths."
+  s.summary      = "Fully customisable IBDesignable circle of fifths implementation."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,7 +25,51 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-A short description of CircleOfFifths..
+CircleOfFifths
+===
+
+Fully customisable IBDesignable circle of fifths implementation.
+
+![alt tag](https://github.com/cemolcay/CircleOfFifths/blob/master/demo.png?raw=true)
+
+Requirements
+----
+
+* Swift 3+
+* iOS 8.0+
+* tvOS 9.0+
+* macOS 10.9+
+
+Install
+----
+
+```
+pod 'CircleOfFifths'
+```
+
+You need to add this post installer script to your podfile in order to use @IBDesignable libraries with pods.
+More information on this [cocoapods issue](https://github.com/CocoaPods/CocoaPods/issues/5334)
+
+```
+post_install do |installer|
+installer.pods_project.build_configurations.each do |config|
+config.build_settings['LD_RUNPATH_SEARCH_PATHS'] = ['$(FRAMEWORK_SEARCH_PATHS)']
+end
+end
+```
+
+Usage
+----
+
+* CircleOfFifths just a regular `UIView` subclass with custom `CALayer` drawing with customisable `@IBInspectable` properties.
+* It can render any `Scale` type in any key of this [music theory library](https://github.com/cemolcay/MusicTheory).
+* Just set the `scale` parameter in order to change scale and/or key of circle.
+* Also draws another customisable circle below to show related major, minor and diminished chords of the scale in circle.
+
+Credits
+----
+
+* Thanks to http://randscullard.com/CircleOfFifths/
                    DESC
 
   s.homepage     = "https://github.com/cemolcay/CircleOfFifths"
@@ -71,7 +115,7 @@ A short description of CircleOfFifths..
   s.ios.deployment_target = "10.0"
   s.osx.deployment_target = "10.11"
   # s.watchos.deployment_target = "2.0"
-  # s.tvos.deployment_target = "9.0"
+  s.tvos.deployment_target = "9.0"
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -80,8 +124,7 @@ A short description of CircleOfFifths..
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :path => '.' }
-  # { :git => "https://github.com/cemolcay/CircleOfFifths.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/cemolcay/CircleOfFifths.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

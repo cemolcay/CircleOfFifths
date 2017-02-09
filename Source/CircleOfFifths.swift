@@ -8,7 +8,7 @@
 
 #if os(OSX)
   import AppKit
-#elseif os(iOS)
+#elseif os(iOS) || os(tvOS)
   import UIKit
 #endif
 import MusicTheorySwift
@@ -80,7 +80,7 @@ internal extension NoteType {
       case .g: return 345
       }
     }
-  #elseif os(iOS)
+  #elseif os(iOS) || os(tvOS)
     internal var circleStartAngle: CGFloat {
       switch self {
       case .c: return -15
@@ -128,7 +128,7 @@ internal enum CircleChordType {
   public typealias CRColor = NSColor
   public typealias CRFont = NSFont
   public typealias CRBezierPath = NSBezierPath
-#elseif os(iOS)
+#elseif os(iOS) || os(tvOS)
   public typealias CRView = UIView
   public typealias CRColor = UIColor
   public typealias CRFont = UIFont
@@ -143,7 +143,7 @@ public class CircleOfFifths: CRView {
     @IBInspectable public var defaultColor: NSColor = .white { didSet { redraw() }}
     @IBInspectable public var highlightedColor: NSColor = .red { didSet { redraw() }}
     @IBInspectable public var disabledColor: NSColor = .lightGray { didSet { redraw() }}
-  #elseif os(iOS)
+  #elseif os(iOS) || os(tvOS)
     @IBInspectable public var defaultColor: UIColor = .white { didSet { redraw() }}
     @IBInspectable public var highlightedColor: UIColor = .red { didSet { redraw() }}
     @IBInspectable public var disabledColor: UIColor = .lightGray { didSet { redraw() }}
@@ -153,7 +153,7 @@ public class CircleOfFifths: CRView {
 
   #if os(OSX)
     @IBInspectable public var textColor: NSColor = .black { didSet { redraw() }}
-  #elseif os(iOS)
+  #elseif os(iOS) || os(tvOS)
     @IBInspectable public var textColor: UIColor = .black { didSet { redraw() }}
   #endif
 
@@ -162,7 +162,7 @@ public class CircleOfFifths: CRView {
 
   #if os(OSX)
     @IBInspectable public var chordPieLineColor: NSColor = .black { didSet { redraw() }}
-  #elseif os(iOS)
+  #elseif os(iOS) || os(tvOS)
     @IBInspectable public var chordPieLineColor: UIColor = .black { didSet { redraw() }}
   #endif
 
@@ -170,7 +170,7 @@ public class CircleOfFifths: CRView {
 
   #if os(OSX)
     @IBInspectable public var circlePieLineColor: NSColor = .black { didSet { redraw() }}
-  #elseif os(iOS)
+  #elseif os(iOS) || os(tvOS)
     @IBInspectable public var circlePieLineColor: UIColor = .black { didSet { redraw() }}
   #endif
 
@@ -183,7 +183,7 @@ public class CircleOfFifths: CRView {
     @IBInspectable public var majorTextColor: NSColor = .black { didSet { redraw() }}
     @IBInspectable public var minorTextColor: NSColor = .black { didSet { redraw() }}
     @IBInspectable public var diminishedTextColor: NSColor = .black { didSet { redraw() }}
-  #elseif os(iOS)
+  #elseif os(iOS) || os(tvOS)
     @IBInspectable public var majorColor: UIColor = .red { didSet { redraw() }}
     @IBInspectable public var minorColor: UIColor = .blue { didSet { redraw() }}
     @IBInspectable public var diminishedColor: UIColor = .green { didSet { redraw() }}
@@ -222,10 +222,10 @@ public class CircleOfFifths: CRView {
       super.init(coder: coder)
     }
 
-    public override init(frame frameRect: NSRect) {
-      super.init(frame: frameRect)
+    public override init(frame: NSRect) {
+      super.init(frame: frame)
     }
-  #elseif os(iOS)
+  #elseif os(iOS) || os(tvOS)
     public required init?(coder aDecoder: NSCoder) {
       super.init(coder: aDecoder)
     }
@@ -331,9 +331,19 @@ public class CircleOfFifths: CRView {
         super.layout()
         draw()
       }
-  #elseif os(iOS)
+
+    public override func draw(_ dirtyRect: NSRect) {
+      super.draw(dirtyRect)
+      draw()
+    }
+  #elseif os(iOS) || os(tvOS)
     public override func layoutSubviews() {
       super.layoutSubviews()
+      draw()
+    }
+
+    public override func draw(_ rect: CGRect) {
+      super.draw(rect)
       draw()
     }
   #endif
@@ -387,12 +397,21 @@ public class CircleOfFifths: CRView {
     }
 
     // Draw chord pie
+    let chordColor: (CircleChordType) -> CRColor = { type in
+      switch type {
+      case .major: return self.majorColor
+      case .minor: return self.minorColor
+      case .diminished: return self.diminishedColor
+      }
+    }
+
     for (index, note) in circle.enumerated() {
       let noteSlice = circlePie.slices[index]
       if let noteIndex = chordNotes.index(of: note) {
         let chordSlice = chordPie.slices[noteIndex]
         chordSlice.startAngle = note.circleStartAngle
         chordSlice.endAngle = note.circleEndAngle
+        chordSlice.color = chordColor(chords[noteIndex])
 
         let intervalSlice = intervalPie.slices[noteIndex]
         intervalSlice.startAngle = note.circleStartAngle
@@ -425,7 +444,7 @@ public class CircleOfFifths: CRView {
       let majorAngle = chordNotes[1].circleStartAngle + 15 + 90
       let minorAngle = chordNotes[4].circleStartAngle + 15 + 90
       let dimAngle = chordNotes[6].circleStartAngle + 15 + 90
-    #elseif os(iOS)
+    #elseif os(iOS) || os(tvOS)
       let majorAngle = chordNotes[1].circleStartAngle + 15 - 90
       let minorAngle = chordNotes[4].circleStartAngle + 15 - 90
       let dimAngle = chordNotes[6].circleStartAngle + 15 - 90
@@ -487,6 +506,7 @@ public class CircleOfFifths: CRView {
 
   // MARK: Redraw
 
+  /// Use this method for bulk update properties
   public func update(with block: @escaping (CircleOfFifths) -> Void) {
     shouldRedraw = false
     block(self)
@@ -498,7 +518,7 @@ public class CircleOfFifths: CRView {
     guard shouldRedraw else { return }
     #if os(OSX)
       needsLayout = true
-    #elseif os(iOS)
+    #elseif os(iOS) || os(tvOS)
       layoutIfNeeded()
     #endif
   }

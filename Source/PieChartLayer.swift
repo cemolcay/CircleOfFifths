@@ -8,7 +8,7 @@
 
 #if os(OSX)
   import AppKit
-#elseif os(iOS)
+#elseif os(iOS) || os(tvOS)
   import UIKit
 #endif
 
@@ -61,7 +61,7 @@ public class PieChartSlice {
     textLayer.alignmentMode = kCAAlignmentCenter
     #if os(OSX)
       textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
-    #elseif os(iOS)
+    #elseif os(iOS) || os(tvOS)
       textLayer.contentsScale = UIScreen.main.scale
     #endif
   }
@@ -76,7 +76,7 @@ public class PieChartLayer: CAShapeLayer {
 
   #if os(OSX)
     public var angleTreshold: CGFloat = 90
-  #elseif os(iOS)
+  #elseif os(iOS) || os(tvOS)
     public var angleTreshold: CGFloat = -90
   #endif
 
@@ -102,12 +102,14 @@ public class PieChartLayer: CAShapeLayer {
     setup()
   }
 
- // MARK: Draw
+  // MARK: Lifecycle
 
   public override func layoutSublayers() {
     super.layoutSublayers()
     draw()
   }
+
+  // MARK: Setup
 
   private func setup() {
     for sliceLayer in sliceLayers {
@@ -122,6 +124,8 @@ public class PieChartLayer: CAShapeLayer {
       sliceLayers.append(sliceLayer)
     }
   }
+
+ // MARK: Draw
 
   private func draw() {
     frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
@@ -145,7 +149,7 @@ public class PieChartLayer: CAShapeLayer {
           startAngle: slice.startAngle + angleTreshold,
           endAngle: slice.endAngle + angleTreshold,
           clockwise: false)
-      #elseif os(iOS)
+      #elseif os(iOS) || os(tvOS)
         slicePath.addArc(
           withCenter: center,
           radius: radius,

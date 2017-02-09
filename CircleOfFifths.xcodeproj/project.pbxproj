@@ -8,22 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		7D8D0FD8E9F378989A52846C /* Pods_CircleOfFifths_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0720A6EA145D6A7AE2015E26 /* Pods_CircleOfFifths_macOS.framework */; };
+		A24307286569673D32D29FB9 /* Pods_CircleOfFifths_TV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635EC5D56632DF6DACDD79C2 /* Pods_CircleOfFifths_TV.framework */; };
+		B219CBC11E4CF5B50060A6B6 /* CircleOfFifths.h in Headers */ = {isa = PBXBuildFile; fileRef = B295295D1E49106B0022EF24 /* CircleOfFifths.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B219CBC21E4CF5BB0060A6B6 /* CircleOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295E1E49106B0022EF24 /* CircleOfFifths.swift */; };
+		B219CBC31E4CF5C10060A6B6 /* PieChartLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29529611E49106B0022EF24 /* PieChartLayer.swift */; };
+		B219CBC41E4CF5C10060A6B6 /* ArcTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295C1E49106B0022EF24 /* ArcTextLayer.swift */; };
 		B29529621E49106B0022EF24 /* ArcTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295C1E49106B0022EF24 /* ArcTextLayer.swift */; };
 		B29529631E49106B0022EF24 /* ArcTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295C1E49106B0022EF24 /* ArcTextLayer.swift */; };
 		B29529641E49106B0022EF24 /* CircleOfFifths.h in Headers */ = {isa = PBXBuildFile; fileRef = B295295D1E49106B0022EF24 /* CircleOfFifths.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B29529651E49106B0022EF24 /* CircleOfFifths.h in Headers */ = {isa = PBXBuildFile; fileRef = B295295D1E49106B0022EF24 /* CircleOfFifths.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B295296C1E49106B0022EF24 /* PieChartLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29529611E49106B0022EF24 /* PieChartLayer.swift */; };
 		B295296D1E49106B0022EF24 /* PieChartLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29529611E49106B0022EF24 /* PieChartLayer.swift */; };
-		B2AA08751E4A7D7400A7F0F7 /* CircleOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295E1E49106B0022EF24 /* CircleOfFifths.swift */; };
+		B29C73E31E4C9EFA0026E872 /* CircleOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295E1E49106B0022EF24 /* CircleOfFifths.swift */; };
+		B29C73E41E4C9F710026E872 /* CircleOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295E1E49106B0022EF24 /* CircleOfFifths.swift */; };
 		BB875D0D155146075DEF0503 /* Pods_CircleOfFifths_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5D7A2ACF11C40CFB3E8E35 /* Pods_CircleOfFifths_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0720A6EA145D6A7AE2015E26 /* Pods_CircleOfFifths_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CircleOfFifths_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34E3B9E036A0EE54DD422190 /* Pods-CircleOfFifths macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleOfFifths macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CircleOfFifths macOS/Pods-CircleOfFifths macOS.release.xcconfig"; sourceTree = "<group>"; };
+		537CEA182B8246DDF261B692 /* Pods-CircleOfFifths TV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleOfFifths TV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CircleOfFifths TV/Pods-CircleOfFifths TV.debug.xcconfig"; sourceTree = "<group>"; };
 		5B434D097561ABDBCED08769 /* Pods-CircleOfFifths iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleOfFifths iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CircleOfFifths iOS/Pods-CircleOfFifths iOS.release.xcconfig"; sourceTree = "<group>"; };
+		635EC5D56632DF6DACDD79C2 /* Pods_CircleOfFifths_TV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CircleOfFifths_TV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FCBF84BDDDF9399B243DFF0 /* Pods-CircleOfFifths macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleOfFifths macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CircleOfFifths macOS/Pods-CircleOfFifths macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		AD4642B7D3ACC7765ED2A4CB /* Pods-CircleOfFifths iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleOfFifths iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CircleOfFifths iOS/Pods-CircleOfFifths iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		B219CBB91E4CF5820060A6B6 /* CircleOfFifths.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CircleOfFifths.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B219CBC51E4CF5C90060A6B6 /* Info TV.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info TV.plist"; sourceTree = "<group>"; };
 		B29529451E490FE80022EF24 /* CircleOfFifths.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CircleOfFifths.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29529531E490FF60022EF24 /* CircleOfFifths.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CircleOfFifths.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B295295C1E49106B0022EF24 /* ArcTextLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcTextLayer.swift; sourceTree = "<group>"; };
@@ -32,10 +42,19 @@
 		B295295F1E49106B0022EF24 /* Info iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info iOS.plist"; sourceTree = "<group>"; };
 		B29529601E49106B0022EF24 /* Info macOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info macOS.plist"; sourceTree = "<group>"; };
 		B29529611E49106B0022EF24 /* PieChartLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartLayer.swift; sourceTree = "<group>"; };
+		DF7800CF6CECD9678E77C226 /* Pods-CircleOfFifths TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleOfFifths TV.release.xcconfig"; path = "Pods/Target Support Files/Pods-CircleOfFifths TV/Pods-CircleOfFifths TV.release.xcconfig"; sourceTree = "<group>"; };
 		FE5D7A2ACF11C40CFB3E8E35 /* Pods_CircleOfFifths_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CircleOfFifths_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B219CBB51E4CF5820060A6B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24307286569673D32D29FB9 /* Pods_CircleOfFifths_TV.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B29529411E490FE80022EF24 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,6 +79,7 @@
 			children = (
 				FE5D7A2ACF11C40CFB3E8E35 /* Pods_CircleOfFifths_iOS.framework */,
 				0720A6EA145D6A7AE2015E26 /* Pods_CircleOfFifths_macOS.framework */,
+				635EC5D56632DF6DACDD79C2 /* Pods_CircleOfFifths_TV.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -71,6 +91,8 @@
 				5B434D097561ABDBCED08769 /* Pods-CircleOfFifths iOS.release.xcconfig */,
 				7FCBF84BDDDF9399B243DFF0 /* Pods-CircleOfFifths macOS.debug.xcconfig */,
 				34E3B9E036A0EE54DD422190 /* Pods-CircleOfFifths macOS.release.xcconfig */,
+				537CEA182B8246DDF261B692 /* Pods-CircleOfFifths TV.debug.xcconfig */,
+				DF7800CF6CECD9678E77C226 /* Pods-CircleOfFifths TV.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -90,6 +112,7 @@
 			children = (
 				B29529451E490FE80022EF24 /* CircleOfFifths.framework */,
 				B29529531E490FF60022EF24 /* CircleOfFifths.framework */,
+				B219CBB91E4CF5820060A6B6 /* CircleOfFifths.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +126,7 @@
 				B295295C1E49106B0022EF24 /* ArcTextLayer.swift */,
 				B295295F1E49106B0022EF24 /* Info iOS.plist */,
 				B29529601E49106B0022EF24 /* Info macOS.plist */,
+				B219CBC51E4CF5C90060A6B6 /* Info TV.plist */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -110,6 +134,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		B219CBB61E4CF5820060A6B6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B219CBC11E4CF5B50060A6B6 /* CircleOfFifths.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B29529421E490FE80022EF24 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,6 +161,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B219CBB81E4CF5820060A6B6 /* CircleOfFifths TV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B219CBC01E4CF5820060A6B6 /* Build configuration list for PBXNativeTarget "CircleOfFifths TV" */;
+			buildPhases = (
+				4ABA1432E82E5596540C70DE /* [CP] Check Pods Manifest.lock */,
+				B219CBB41E4CF5820060A6B6 /* Sources */,
+				B219CBB51E4CF5820060A6B6 /* Frameworks */,
+				B219CBB61E4CF5820060A6B6 /* Headers */,
+				B219CBB71E4CF5820060A6B6 /* Resources */,
+				FEB3C15202A1819F8BFBBA32 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CircleOfFifths TV";
+			productName = "CircleOfFifths TV";
+			productReference = B219CBB91E4CF5820060A6B6 /* CircleOfFifths.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		B29529441E490FE80022EF24 /* CircleOfFifths iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B295294B1E490FE80022EF24 /* Build configuration list for PBXNativeTarget "CircleOfFifths iOS" */;
@@ -177,6 +229,11 @@
 			attributes = {
 				LastUpgradeCheck = 0820;
 				TargetAttributes = {
+					B219CBB81E4CF5820060A6B6 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 77Y3N48SNF;
+						ProvisioningStyle = Automatic;
+					};
 					B29529441E490FE80022EF24 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 77Y3N48SNF;
@@ -205,11 +262,19 @@
 			targets = (
 				B29529441E490FE80022EF24 /* CircleOfFifths iOS */,
 				B29529521E490FF60022EF24 /* CircleOfFifths macOS */,
+				B219CBB81E4CF5820060A6B6 /* CircleOfFifths TV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B219CBB71E4CF5820060A6B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B29529431E490FE80022EF24 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -257,6 +322,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		4ABA1432E82E5596540C70DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		69E69C21135540AAC898EBBB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,15 +367,40 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CircleOfFifths macOS/Pods-CircleOfFifths macOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FEB3C15202A1819F8BFBBA32 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CircleOfFifths TV/Pods-CircleOfFifths TV-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B219CBB41E4CF5820060A6B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B219CBC21E4CF5BB0060A6B6 /* CircleOfFifths.swift in Sources */,
+				B219CBC31E4CF5C10060A6B6 /* PieChartLayer.swift in Sources */,
+				B219CBC41E4CF5C10060A6B6 /* ArcTextLayer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B29529401E490FE80022EF24 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B295296C1E49106B0022EF24 /* PieChartLayer.swift in Sources */,
-				B2AA08751E4A7D7400A7F0F7 /* CircleOfFifths.swift in Sources */,
+				B29C73E41E4C9F710026E872 /* CircleOfFifths.swift in Sources */,
 				B29529621E49106B0022EF24 /* ArcTextLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B295296D1E49106B0022EF24 /* PieChartLayer.swift in Sources */,
+				B29C73E31E4C9EFA0026E872 /* CircleOfFifths.swift in Sources */,
 				B29529631E49106B0022EF24 /* ArcTextLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +418,131 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		B219CBBE1E4CF5820060A6B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 537CEA182B8246DDF261B692 /* Pods-CircleOfFifths TV.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 77Y3N48SNF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info TV.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.CircleOfFifths-TV";
+				PRODUCT_NAME = CircleOfFifths;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B219CBBF1E4CF5820060A6B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF7800CF6CECD9678E77C226 /* Pods-CircleOfFifths TV.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 77Y3N48SNF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info TV.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.CircleOfFifths-TV";
+				PRODUCT_NAME = CircleOfFifths;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		B295293E1E490FD60022EF24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -374,7 +605,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -435,7 +666,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.CircleOfFifths-iOS";
@@ -503,7 +734,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.CircleOfFifths-macOS";
@@ -564,7 +795,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Info macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "co.prototapp.CircleOfFifths-macOS";
 				PRODUCT_NAME = CircleOfFifths;
@@ -580,6 +811,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B219CBC01E4CF5820060A6B6 /* Build configuration list for PBXNativeTarget "CircleOfFifths TV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B219CBBE1E4CF5820060A6B6 /* Debug */,
+				B219CBBF1E4CF5820060A6B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B295293D1E490FD60022EF24 /* Build configuration list for PBXProject "CircleOfFifths" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
