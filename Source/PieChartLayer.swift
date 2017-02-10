@@ -172,10 +172,31 @@ public class PieChartLayer: CAShapeLayer {
 
       // text frame
       if let att = slice.attributedString {
-        slice.textLayer.frame.size = att.boundingRect(
-          with: CGSize(width: .max, height: .max),
-          options: .usesLineFragmentOrigin,
-          context: nil).size
+
+        #if os(OSX)
+          if #available(OSX 10.11, *) {
+            slice.textLayer.frame.size = att.boundingRect(
+              with: CGSize(width: .max, height: .max),
+              options: [.usesLineFragmentOrigin, .usesFontLeading],
+              context: nil)
+              .size
+          } else {
+            slice.textLayer.frame.size = att.string.boundingRect(
+              with: CGSize(width: .max, height: .max),
+              options: [.usesLineFragmentOrigin, .usesFontLeading],
+              attributes: att.attributes(
+                at: 0,
+                effectiveRange: nil))
+              .size
+          }
+        #elseif os(iOS) || os(tvOS)
+          slice.textLayer.frame.size = att.boundingRect(
+            with: CGSize(width: .max, height: .max),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            context: nil)
+            .size
+        #endif
+
       } else {
         slice.textLayer.frame.size = .zero
       }

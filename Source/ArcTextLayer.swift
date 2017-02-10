@@ -59,12 +59,33 @@ public class ArcTextLayer: CALayer {
 
     var radAngle = toRadians(angle: angle)
 
-    let textSize = text.boundingRect(
-      with: CGSize(width: .max, height: .max),
-      options: [.usesLineFragmentOrigin, .usesFontLeading],
-      context: nil)
-      .integral
-      .size
+    #if os(OSX)
+      var textSize = CGSize.zero
+      if #available(OSX 10.11, *) {
+        textSize = text.boundingRect(
+          with: CGSize(width: .max, height: .max),
+          options: [.usesLineFragmentOrigin, .usesFontLeading],
+          context: nil)
+          .integral
+          .size
+      } else {
+        textSize = text.string.boundingRect(
+          with: CGSize(width: .max, height: .max),
+          options: [.usesLineFragmentOrigin, .usesFontLeading],
+          attributes: text.attributes(
+            at: 0,
+            effectiveRange: nil))
+          .integral
+          .size
+      }
+    #elseif os(iOS) || os(tvOS)
+      let textSize = text.boundingRect(
+        with: CGSize(width: .max, height: .max),
+        options: [.usesLineFragmentOrigin, .usesFontLeading],
+        context: nil)
+        .integral
+        .size
+    #endif
 
     let perimeter: CGFloat = 2 * .pi * radius
     let textAngle: CGFloat = textSize.width / perimeter * 2 * .pi
@@ -98,12 +119,34 @@ public class ArcTextLayer: CALayer {
 
     for textLayer in textLayers {
       let letter = textLayer.string as! NSAttributedString
-      let charSize = letter.boundingRect(
-        with: CGSize(width: .max, height: .max),
-        options: [.usesLineFragmentOrigin, .usesFontLeading],
-        context: nil)
-        .integral
-        .size
+
+      #if os(OSX)
+        var charSize = CGSize.zero
+        if #available(OSX 10.11, *) {
+          charSize = letter.boundingRect(
+            with: CGSize(width: .max, height: .max),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            context: nil)
+            .integral
+            .size
+        } else {
+          charSize = letter.string.boundingRect(
+            with: CGSize(width: .max, height: .max),
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            attributes: letter.attributes(
+              at: 0,
+              effectiveRange: nil))
+            .integral
+            .size
+        }
+      #elseif os(iOS) || os(tvOS)
+        let charSize = letter.boundingRect(
+          with: CGSize(width: .max, height: .max),
+          options: [.usesLineFragmentOrigin, .usesFontLeading],
+          context: nil)
+          .integral
+          .size
+      #endif
 
       let letterAngle = (charSize.width / perimeter) * textDirection
       let x = radius * cos(radAngle + (letterAngle / 2))

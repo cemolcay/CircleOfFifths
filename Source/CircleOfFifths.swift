@@ -499,7 +499,7 @@ public class CircleOfFifths: CRView {
 
     switch chordMode {
     case .major: return roman.uppercased()
-    case .diminished: return "\(roman)°"
+    case .diminished: return roman.isEmpty ? "" : "\(roman)°"
     default: return roman
     }
   }
