@@ -125,6 +125,7 @@ Credits
   #
 
   s.source       = { :git => "https://github.com/cemolcay/CircleOfFifths.git", :tag => "#{s.version}" }
+  # { :path => '.' }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

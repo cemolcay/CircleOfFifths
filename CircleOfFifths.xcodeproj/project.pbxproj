@@ -21,6 +21,9 @@
 		B295296D1E49106B0022EF24 /* PieChartLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29529611E49106B0022EF24 /* PieChartLayer.swift */; };
 		B29C73E31E4C9EFA0026E872 /* CircleOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295E1E49106B0022EF24 /* CircleOfFifths.swift */; };
 		B29C73E41E4C9F710026E872 /* CircleOfFifths.swift in Sources */ = {isa = PBXBuildFile; fileRef = B295295E1E49106B0022EF24 /* CircleOfFifths.swift */; };
+		B2EFBA521EA2AE65005E4012 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EFBA511EA2AE65005E4012 /* Extensions.swift */; };
+		B2EFBA711EA68B71005E4012 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EFBA511EA2AE65005E4012 /* Extensions.swift */; };
+		B2EFBA721EA68B71005E4012 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EFBA511EA2AE65005E4012 /* Extensions.swift */; };
 		BB875D0D155146075DEF0503 /* Pods_CircleOfFifths_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5D7A2ACF11C40CFB3E8E35 /* Pods_CircleOfFifths_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +45,7 @@
 		B295295F1E49106B0022EF24 /* Info iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info iOS.plist"; sourceTree = "<group>"; };
 		B29529601E49106B0022EF24 /* Info macOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info macOS.plist"; sourceTree = "<group>"; };
 		B29529611E49106B0022EF24 /* PieChartLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartLayer.swift; sourceTree = "<group>"; };
+		B2EFBA511EA2AE65005E4012 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DF7800CF6CECD9678E77C226 /* Pods-CircleOfFifths TV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleOfFifths TV.release.xcconfig"; path = "Pods/Target Support Files/Pods-CircleOfFifths TV/Pods-CircleOfFifths TV.release.xcconfig"; sourceTree = "<group>"; };
 		FE5D7A2ACF11C40CFB3E8E35 /* Pods_CircleOfFifths_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CircleOfFifths_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,6 +128,7 @@
 				B295295E1E49106B0022EF24 /* CircleOfFifths.swift */,
 				B29529611E49106B0022EF24 /* PieChartLayer.swift */,
 				B295295C1E49106B0022EF24 /* ArcTextLayer.swift */,
+				B2EFBA511EA2AE65005E4012 /* Extensions.swift */,
 				B295295F1E49106B0022EF24 /* Info iOS.plist */,
 				B29529601E49106B0022EF24 /* Info macOS.plist */,
 				B219CBC51E4CF5C90060A6B6 /* Info TV.plist */,
@@ -304,7 +309,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		1D6D469FDD611FAEED3210DE /* [CP] Check Pods Manifest.lock */ = {
@@ -319,7 +324,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4ABA1432E82E5596540C70DE /* [CP] Check Pods Manifest.lock */ = {
@@ -334,7 +339,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		69E69C21135540AAC898EBBB /* [CP] Copy Pods Resources */ = {
@@ -392,6 +397,7 @@
 				B219CBC21E4CF5BB0060A6B6 /* CircleOfFifths.swift in Sources */,
 				B219CBC31E4CF5C10060A6B6 /* PieChartLayer.swift in Sources */,
 				B219CBC41E4CF5C10060A6B6 /* ArcTextLayer.swift in Sources */,
+				B2EFBA721EA68B71005E4012 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +408,7 @@
 				B295296C1E49106B0022EF24 /* PieChartLayer.swift in Sources */,
 				B29C73E41E4C9F710026E872 /* CircleOfFifths.swift in Sources */,
 				B29529621E49106B0022EF24 /* ArcTextLayer.swift in Sources */,
+				B2EFBA521EA2AE65005E4012 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +419,7 @@
 				B295296D1E49106B0022EF24 /* PieChartLayer.swift in Sources */,
 				B29C73E31E4C9EFA0026E872 /* CircleOfFifths.swift in Sources */,
 				B29529631E49106B0022EF24 /* ArcTextLayer.swift in Sources */,
+				B2EFBA711EA68B71005E4012 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

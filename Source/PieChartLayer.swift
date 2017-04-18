@@ -12,66 +12,50 @@
   import UIKit
 #endif
 
-#if os(OSX)
-  public extension NSBezierPath {
-    public var cgPath: CGPath {
-      let path = CGMutablePath()
-      var points = [CGPoint](repeating: .zero, count: 3)
-
-      for i in 0 ..< self.elementCount {
-        let type = self.element(at: i, associatedPoints: &points)
-        switch type {
-        case .moveToBezierPathElement:
-          path.move(to: points[0])
-        case .lineToBezierPathElement:
-          path.addLine(to: points[0])
-        case .curveToBezierPathElement:
-          path.addCurve(to: points[2], control1: points[0], control2: points[1])
-        case .closePathBezierPathElement:
-          path.closeSubpath()
-        }
-      }
-
-      return path
-    }
-  }
-#endif
-
 public class PieChartSlice {
   public var startAngle: CGFloat
   public var endAngle: CGFloat
   public var color: CRColor
   public var highlightedColor: CRColor
   public var disabledColor: CRColor
-  fileprivate var textLayer: CATextLayer
   public var attributedString: NSAttributedString?
+  public var isEnabled: Bool
+  public var isSelected: Bool
 
-  public var isEnabled: Bool = true
-  public var isSelected: Bool = false
+  public init(
+    startAngle: CGFloat = 0,
+    endAngle: CGFloat = 0,
+    color: CRColor = .white,
+    highlightedColor: CRColor = .lightGray,
+    disabledColor: CRColor = .darkGray,
+    attributedString: NSAttributedString? = nil,
+    isEnabled: Bool = true,
+    isSelected: Bool = false) {
 
-  public init(startAngle: CGFloat, endAngle: CGFloat, color: CRColor, highlightedColor: CRColor? = nil, disabledColor: CRColor? = nil, attributedString: NSAttributedString? = nil) {
     self.startAngle = startAngle
     self.endAngle = endAngle
     self.color = color
-    self.highlightedColor = highlightedColor ?? color
-    self.disabledColor = disabledColor ?? color
+    self.highlightedColor = highlightedColor
+    self.disabledColor = disabledColor
     self.attributedString = attributedString
-    textLayer = CATextLayer()
-    textLayer.actions = ["position": NSNull() as CAAction]
-    textLayer.alignmentMode = kCAAlignmentCenter
-    #if os(OSX)
-      textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
-    #elseif os(iOS) || os(tvOS)
-      textLayer.contentsScale = UIScreen.main.scale
-    #endif
+    self.isEnabled = isEnabled
+    self.isSelected = isSelected
   }
 }
 
 public class PieChartLayer: CAShapeLayer {
-  public var slices = [PieChartSlice]()
+  public var slices = [PieChartSlice]() {
+    didSet {
+      if oldValue.count == slices.count {
+        setNeedsLayout()
+      } else {
+        setup()
+      }
+    }
+  }
+
   public var center: CGPoint = .zero
   public var radius: CGFloat = 0
-
   public var labelPositionTreshold: CGFloat = 10
 
   #if os(OSX)
@@ -81,19 +65,12 @@ public class PieChartLayer: CAShapeLayer {
   #endif
 
   private var sliceLayers = [CAShapeLayer]()
+  private var textLayers = [CATextLayer]()
 
   // MARK: Init
 
-  public init(radius: CGFloat, center: CGPoint, slices: [PieChartSlice]) {
+  public override init() {
     super.init()
-    self.radius = radius
-    self.center = center
-    self.slices = slices
-    setup()
-  }
-
-  public required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
     setup()
   }
 
@@ -102,36 +79,49 @@ public class PieChartLayer: CAShapeLayer {
     setup()
   }
 
-  // MARK: Lifecycle
+  public required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    setup()
+  }
+
+  private func setup() {
+    // Clean layers
+    sliceLayers.forEach({ $0.removeFromSuperlayer() })
+    sliceLayers = []
+    textLayers.forEach({ $0.removeFromSuperlayer() })
+    textLayers = []
+
+    // Create layers
+    for _ in 0..<slices.count {
+      let sliceLayer = CAShapeLayer()
+      sliceLayers.append(sliceLayer)
+      addSublayer(sliceLayer)
+
+      let textLayer = CATextLayer()
+      #if os(OSX)
+        textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
+      #elseif os(iOS) || os(tvOS)
+        textLayer.contentsScale = UIScreen.main.scale
+      #endif
+      textLayers.append(textLayer)
+      addSublayer(textLayer)
+    }
+  }
+
+  // MARK: Draw
 
   public override func layoutSublayers() {
     super.layoutSublayers()
     draw()
   }
 
-  // MARK: Setup
-
-  private func setup() {
-    for sliceLayer in sliceLayers {
-      sliceLayer.sublayers?.forEach({ $0.removeFromSuperlayer() })
-      sliceLayer.removeFromSuperlayer()
-    }
-
-    for slice in slices {
-      let sliceLayer = CAShapeLayer()
-      sliceLayer.addSublayer(slice.textLayer)
-      addSublayer(sliceLayer)
-      sliceLayers.append(sliceLayer)
-    }
-  }
-
- // MARK: Draw
-
   private func draw() {
-    frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
+    CATransaction.setDisableActions(true)
 
-    for (index, sliceLayer) in sliceLayers.enumerated() {
+    for index in 0..<slices.count {
       let slice = slices[index]
+      let sliceLayer = sliceLayers[index]
+      let textLayer = textLayers[index]
 
       // slice layer
       let color = slice.isSelected ? slice.highlightedColor.cgColor : (slice.isEnabled ? slice.color.cgColor : slice.disabledColor.cgColor)
@@ -153,35 +143,36 @@ public class PieChartLayer: CAShapeLayer {
         slicePath.addArc(
           withCenter: center,
           radius: radius,
-          startAngle: toRadians(angle: slice.startAngle + angleTreshold),
-          endAngle: toRadians(angle: slice.endAngle + angleTreshold),
+          startAngle: (slice.startAngle + angleTreshold).radians,
+          endAngle: (slice.endAngle + angleTreshold).radians,
           clockwise: true)
       #endif
       slicePath.close()
       sliceLayer.path = slicePath.cgPath
 
       // text layer
-      slice.textLayer.string = slice.attributedString
+      textLayer.string = slice.attributedString
 
       // text position
-      let teta = toRadians(angle: (slice.endAngle + slice.startAngle + (angleTreshold * 2)) / 2)
+      let teta = ((slice.endAngle + slice.startAngle + (angleTreshold * 2)) / 2.0).radians
       let d = radius - labelPositionTreshold
       let x = center.x + (d * cos(teta))
       let y = center.y + (d * sin(teta))
-      slice.textLayer.position = CGPoint(x: x, y: y)
+      textLayer.position = CGPoint(x: x, y: y)
 
       // text frame
       if let att = slice.attributedString {
+        var textSize = CGSize.zero
 
         #if os(OSX)
           if #available(OSX 10.11, *) {
-            slice.textLayer.frame.size = att.boundingRect(
+            textSize = att.boundingRect(
               with: CGSize(width: .max, height: .max),
               options: [.usesLineFragmentOrigin, .usesFontLeading],
               context: nil)
               .size
           } else {
-            slice.textLayer.frame.size = att.string.boundingRect(
+            textSize = att.string.boundingRect(
               with: CGSize(width: .max, height: .max),
               options: [.usesLineFragmentOrigin, .usesFontLeading],
               attributes: att.attributes(
@@ -190,20 +181,17 @@ public class PieChartLayer: CAShapeLayer {
               .size
           }
         #elseif os(iOS) || os(tvOS)
-          slice.textLayer.frame.size = att.boundingRect(
+          textSize = att.boundingRect(
             with: CGSize(width: .max, height: .max),
             options: [.usesLineFragmentOrigin, .usesFontLeading],
             context: nil)
             .size
         #endif
 
+        textLayer.frame.size = textSize
       } else {
-        slice.textLayer.frame.size = .zero
+        textLayer.frame.size = .zero
       }
     }
-  }
-
-  private func toRadians(angle: CGFloat) -> CGFloat {
-    return angle * .pi / 180
   }
 }

@@ -15,31 +15,38 @@
 public class ArcTextLayer: CALayer {
   public var angle: CGFloat = 0
   public var radius: CGFloat = 0
-  public var text: NSAttributedString? = nil {
-    didSet {
-      setup()
-    }
-  }
+  public var text: NSAttributedString = NSAttributedString() { didSet { setup() }}
   private var textLayers = [CATextLayer]()
 
-  public override func layoutSublayers() {
-    super.layoutSublayers()
-    draw()
+  // MARK: Init
+
+  public override init() {
+    super.init()
+    setup()
   }
 
-  private func setup() {
-    guard let text = self.text else { return }
+  public override init(layer: Any) {
+    super.init(layer: layer)
+    setup()
+  }
 
-    for textLayer in textLayers {
-      textLayer.removeFromSuperlayer()
-    }
+  public required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    setup()
+  }
+  
+  private func setup() {
+    CATransaction.setDisableActions(true)
+
+    // Clean
+    textLayers.forEach({ $0.removeFromSuperlayer() })
     textLayers = []
 
+    // Create
     for c in 0..<text.length {
       let textLayer = CATextLayer()
       textLayer.string = text.attributedSubstring(from: NSRange(c..<c+1))
       textLayer.alignmentMode = kCAAlignmentCenter
-      textLayer.actions = ["position": NSNull() as CAAction]
       #if os(OSX)
         textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
       #elseif os(iOS) || os(tvOS)
@@ -51,13 +58,15 @@ public class ArcTextLayer: CALayer {
     }
   }
 
-  private func draw() {
-    guard let text = self.text else { return }
-    if !text.string.isEmpty, textLayers.isEmpty {
-      setup()
-    }
+  // MARK: Draw
 
-    var radAngle = toRadians(angle: angle)
+  public override func layoutSublayers() {
+    super.layoutSublayers()
+    draw()
+  }
+
+  private func draw() {
+    var radAngle = angle.radians
 
     #if os(OSX)
       var textSize = CGSize.zero
@@ -93,7 +102,13 @@ public class ArcTextLayer: CALayer {
     var textRotation: CGFloat = 0
     var textDirection: CGFloat = 0
 
-    if angle > toRadians(angle: 10), angle < toRadians(angle: 170) {
+    #if os(OSX)
+      let isOutwards = radAngle < CGFloat(10).radians && radAngle > CGFloat(170).radians
+    #elseif os(iOS) || os(tvOS)
+      let isOutwards = radAngle > CGFloat(10).radians && radAngle < CGFloat(170).radians
+    #endif
+
+    if isOutwards {
       // top string
       #if os(OSX)
         textRotation = 1.5 * .pi
@@ -160,9 +175,5 @@ public class ArcTextLayer: CALayer {
       textLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: radAngle - textRotation))
       radAngle += letterAngle
     }
-  }
-
-  private func toRadians(angle: CGFloat) -> CGFloat {
-    return angle * .pi / 180
   }
 }
