@@ -3,17 +3,17 @@
 
 target 'iOS' do
   use_frameworks!
-  pod 'CircleOfFifths'
+  pod 'CircleOfFifths', :path => '..'
 end
 
 target 'Mac' do
   use_frameworks!
-  pod 'CircleOfFifths'
+  pod 'CircleOfFifths', :path => '..'
 end
 
 target 'TV' do
   use_frameworks!
-  pod 'CircleOfFifths'
+  pod 'CircleOfFifths', :path => '..'
 end
 
 post_install do |installer|
