@@ -23,40 +23,12 @@ internal enum CircleChordType {
 public class CircleOfFifths: CRView {
   public var scale = Scale(type: .minor, key: .c) { didSet { redraw() }}
 
-  // Circle of Fifths Pie
-
-  @IBInspectable public var fontSize: CGFloat = 15 { didSet { redraw() }}
-  @IBInspectable public var textTreshold: CGFloat = 10  { didSet { redraw() }}
-
   #if os(OSX)
     @IBInspectable public var defaultColor: NSColor = .white { didSet { redraw() }}
     @IBInspectable public var highlightedColor: NSColor = .red { didSet { redraw() }}
     @IBInspectable public var disabledColor: NSColor = .lightGray { didSet { redraw() }}
     @IBInspectable public var textColor: NSColor = .black { didSet { redraw() }}
     @IBInspectable public var circlePieLineColor: NSColor = .black { didSet { redraw() }}
-  #elseif os(iOS) || os(tvOS)
-    @IBInspectable public var defaultColor: UIColor = .white { didSet { redraw() }}
-    @IBInspectable public var highlightedColor: UIColor = .red { didSet { redraw() }}
-    @IBInspectable public var disabledColor: UIColor = .lightGray { didSet { redraw() }}
-    @IBInspectable public var textColor: UIColor = .black { didSet { redraw() }}
-    @IBInspectable public var circlePieLineColor: UIColor = .black { didSet { redraw() }}
-  #endif
-
-  @IBInspectable public var circlePieLineWidth: CGFloat = 1 { didSet { redraw() }}
-
-  // Interval Pie
-
-  @IBInspectable public var intervalPieHeight: CGFloat = 10 { didSet { redraw() }}
-  @IBInspectable public var intervalFontSize: CGFloat = 15 { didSet { redraw() }}
-  @IBInspectable public var intervalTextTreshold: CGFloat = 15 { didSet { redraw() }}
-
-  // Chord Pie
-
-  @IBInspectable public var chordPieHeight: CGFloat = 10 { didSet { redraw() }}
-  @IBInspectable public var chordFontSize: CGFloat = 15 { didSet { redraw() }}
-  @IBInspectable public var chordTextTreshold: CGFloat = 5 { didSet { redraw() }}
-
-  #if os(OSX)
     @IBInspectable public var majorColor: NSColor = .red { didSet { redraw() }}
     @IBInspectable public var minorColor: NSColor = .blue { didSet { redraw() }}
     @IBInspectable public var diminishedColor: NSColor = .green { didSet { redraw() }}
@@ -65,6 +37,11 @@ public class CircleOfFifths: CRView {
     @IBInspectable public var diminishedTextColor: NSColor = .black { didSet { redraw() }}
     @IBInspectable public var chordPieLineColor: NSColor = .black { didSet { redraw() }}
   #elseif os(iOS) || os(tvOS)
+    @IBInspectable public var defaultColor: UIColor = .white { didSet { redraw() }}
+    @IBInspectable public var highlightedColor: UIColor = .red { didSet { redraw() }}
+    @IBInspectable public var disabledColor: UIColor = .lightGray { didSet { redraw() }}
+    @IBInspectable public var textColor: UIColor = .black { didSet { redraw() }}
+    @IBInspectable public var circlePieLineColor: UIColor = .black { didSet { redraw() }}
     @IBInspectable public var majorColor: UIColor = .red { didSet { redraw() }}
     @IBInspectable public var minorColor: UIColor = .blue { didSet { redraw() }}
     @IBInspectable public var diminishedColor: UIColor = .green { didSet { redraw() }}
@@ -75,6 +52,16 @@ public class CircleOfFifths: CRView {
   #endif
 
   @IBInspectable public var chordPieLineWidth: CGFloat = 1 { didSet { redraw() }}
+  @IBInspectable public var circlePieLineWidth: CGFloat = 1 { didSet { redraw() }}
+  @IBInspectable public var chordPieHeight: CGFloat = 16 { didSet { redraw() }}
+  @IBInspectable public var chordFontSize: CGFloat = 15 { didSet { redraw() }}
+  @IBInspectable public var chordTextTreshold: CGFloat = 8 { didSet { redraw() }}
+
+  public var fontSize: CGFloat = 15
+  public var textTreshold: CGFloat = 10
+  public var intervalPieHeight: CGFloat = 10
+  public var intervalFontSize: CGFloat = 15
+  public var intervalTextTreshold: CGFloat = 15
 
   private var circle: [NoteType] = [.c, .g, .d, .a, .e, .b, .gFlat, .dFlat, .aFlat, .eFlat, .bFlat, .f]
   private var chords: [CircleChordType] = [.major, .major, .major, .minor, .minor, .minor, .diminished]
@@ -155,10 +142,16 @@ public class CircleOfFifths: CRView {
   #endif
 
   private func draw() {
-    CATransaction.setDisableActions(true)
     #if os(OSX)
       guard let layer = layer else { return }
     #endif
+
+    let width = min(frame.size.width, frame.size.height)
+    fontSize = width * 32.0 / 300.0
+    textTreshold = width * 35.0 / 300.0
+    intervalPieHeight = width * 60.0 / 300.0
+    intervalTextTreshold = width * 18.0 / 300.0
+    intervalFontSize = width * 15.0 / 300.0
 
     // Set layer colors
     chordPie.strokeColor = chordPieLineColor.cgColor

@@ -13,8 +13,8 @@
 #endif
 
 public class ArcTextLayer: CALayer {
-  public var angle: CGFloat = 0 { didSet { setNeedsLayout() }}
-  public var radius: CGFloat = 0 { didSet { setNeedsLayout() }}
+  public var angle: CGFloat = 0
+  public var radius: CGFloat = 0
   public var text: NSAttributedString = NSAttributedString() { didSet { setup() }}
   private var textLayers = [CATextLayer]()
 
@@ -36,6 +36,8 @@ public class ArcTextLayer: CALayer {
   }
   
   private func setup() {
+    CATransaction.setDisableActions(true)
+
     // Clean
     textLayers.forEach({ $0.removeFromSuperlayer() })
     textLayers = []
@@ -59,6 +61,7 @@ public class ArcTextLayer: CALayer {
   // MARK: Draw
 
   public override func layoutSublayers() {
+    super.layoutSublayers()
     draw()
   }
 

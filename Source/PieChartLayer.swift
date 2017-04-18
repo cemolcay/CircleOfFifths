@@ -54,9 +54,9 @@ public class PieChartLayer: CAShapeLayer {
     }
   }
 
-  public var center: CGPoint = .zero { didSet { setNeedsLayout() }}
-  public var radius: CGFloat = 0 { didSet { setNeedsLayout() }}
-  public var labelPositionTreshold: CGFloat = 10 { didSet { setNeedsLayout() }}
+  public var center: CGPoint = .zero
+  public var radius: CGFloat = 0
+  public var labelPositionTreshold: CGFloat = 10
 
   #if os(OSX)
     public var angleTreshold: CGFloat = 90
@@ -116,6 +116,8 @@ public class PieChartLayer: CAShapeLayer {
   }
 
   private func draw() {
+    CATransaction.setDisableActions(true)
+
     for index in 0..<slices.count {
       let slice = slices[index]
       let sliceLayer = sliceLayers[index]
