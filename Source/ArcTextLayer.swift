@@ -102,13 +102,7 @@ public class ArcTextLayer: CALayer {
     var textRotation: CGFloat = 0
     var textDirection: CGFloat = 0
 
-    #if os(OSX)
-      let isOutwards = radAngle < CGFloat(10).radians && radAngle > CGFloat(170).radians
-    #elseif os(iOS) || os(tvOS)
-      let isOutwards = radAngle > CGFloat(10).radians && radAngle < CGFloat(170).radians
-    #endif
-
-    if isOutwards {
+    if angle > CGFloat(10).radians, angle < CGFloat(170).radians {
       // top string
       #if os(OSX)
         textRotation = 1.5 * .pi

@@ -237,6 +237,10 @@ public class CircleOfFifths: CRView {
     circlePie.frame = layer.bounds
     intervalPie.frame = layer.bounds
 
+    chordPie.setNeedsLayout()
+    circlePie.setNeedsLayout()
+    intervalPie.setNeedsLayout()
+
     // Draw chord type over chord pie
     #if os(OSX)
       let majorAngle = chordNotes[1].circleStartAngle + 15 + 90
