@@ -12,6 +12,28 @@
   import UIKit
 #endif
 
+extension NSAttributedString {
+    var boundingRect : CGRect {
+    #if os(OSX)
+    if #available(OSX 10.11, *) {
+        return boundingRect(with: .max,
+                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                            context: nil)
+
+    } else {
+        return string.boundingRect(with: .max,
+                                   options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                   attributes: attributes(at: 0, effectiveRange: nil))
+
+    }
+    #elseif os(iOS) || os(tvOS)
+        return boundingRect(with: .max,
+                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                            context: nil)
+    #endif
+    }
+}
+
 public class PieChartSlice {
   public var startAngle: CGFloat
   public var endAngle: CGFloat
@@ -161,37 +183,7 @@ public class PieChartLayer: CAShapeLayer {
       textLayer.position = CGPoint(x: x, y: y)
 
       // text frame
-      if let att = slice.attributedString {
-        var textSize = CGSize.zero
-
-        #if os(OSX)
-          if #available(OSX 10.11, *) {
-            textSize = att.boundingRect(
-              with: CGSize(width: .max, height: .max),
-              options: [.usesLineFragmentOrigin, .usesFontLeading],
-              context: nil)
-              .size
-          } else {
-            textSize = att.string.boundingRect(
-              with: CGSize(width: .max, height: .max),
-              options: [.usesLineFragmentOrigin, .usesFontLeading],
-              attributes: att.attributes(
-                at: 0,
-                effectiveRange: nil))
-              .size
-          }
-        #elseif os(iOS) || os(tvOS)
-          textSize = att.boundingRect(
-            with: CGSize(width: .max, height: .max),
-            options: [.usesLineFragmentOrigin, .usesFontLeading],
-            context: nil)
-            .size
-        #endif
-
-        textLayer.frame.size = textSize
-      } else {
-        textLayer.frame.size = .zero
-      }
+      textLayer.frame.size = slice.attributedString?.boundingRect.size ?? .zero
     }
   }
 }
