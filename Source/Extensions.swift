@@ -20,28 +20,7 @@ import MusicTheorySwift
   public typealias CRColor = NSColor
   public typealias CRFont = NSFont
   public typealias CRBezierPath = NSBezierPath
-#elseif os(iOS) || os(tvOS)
-  public typealias CRView = UIView
-  public typealias CRColor = UIColor
-  public typealias CRFont = UIFont
-  public typealias CRBezierPath = UIBezierPath
-#endif
 
-// MARK: - CGFloat Extension
-
-internal extension CGFloat {
-  var radians: CGFloat {
-    return self * .pi / 180.0
-  }
-}
-
-extension CGSize {
-    static let max = CGSize(width: .max, height: .max)
-}
-
-// MARK: - NSBezierPath Extension
-
-#if os(OSX)
   public extension NSBezierPath {
     public var cgPath: CGPath {
       let path = CGMutablePath()
@@ -64,7 +43,25 @@ extension CGSize {
       return path
     }
   }
+#elseif os(iOS) || os(tvOS)
+  public typealias CRView = UIView
+  public typealias CRColor = UIColor
+  public typealias CRFont = UIFont
+  public typealias CRBezierPath = UIBezierPath
 #endif
+
+// MARK: - CGFloat Extension
+
+internal extension CGFloat {
+  var radians: CGFloat {
+    return self * .pi / 180.0
+  }
+}
+
+extension CGSize {
+  static let max = CGSize(width: .max, height: .max)
+}
+
 
 // MARK: - ScaleType Extension
 
