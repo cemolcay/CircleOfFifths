@@ -50,6 +50,28 @@ import MusicTheorySwift
   public typealias CRBezierPath = UIBezierPath
 #endif
 
+extension NSAttributedString {
+  var boundingRect : CGRect {
+    #if os(OSX)
+      if #available(OSX 10.11, *) {
+        return boundingRect(with: .max,
+                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                            context: nil)
+
+      } else {
+        return string.boundingRect(with: .max,
+                                   options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                   attributes: attributes(at: 0, effectiveRange: nil))
+
+      }
+    #elseif os(iOS) || os(tvOS)
+      return boundingRect(with: .max,
+                          options: [.usesLineFragmentOrigin, .usesFontLeading],
+                          context: nil)
+    #endif
+  }
+}
+
 // MARK: - CGFloat Extension
 
 internal extension CGFloat {
