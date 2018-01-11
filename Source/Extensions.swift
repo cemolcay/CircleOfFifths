@@ -35,6 +35,10 @@ internal extension CGFloat {
   }
 }
 
+extension CGSize {
+    static let max = CGSize(width: .max, height: .max)
+}
+
 // MARK: - NSBezierPath Extension
 
 #if os(OSX)
