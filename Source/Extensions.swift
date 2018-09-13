@@ -46,13 +46,13 @@ internal extension CGFloat {
       for i in 0 ..< self.elementCount {
         let type = self.element(at: i, associatedPoints: &points)
         switch type {
-        case .moveToBezierPathElement:
+        case .moveTo:
           path.move(to: points[0])
-        case .lineToBezierPathElement:
+        case .lineTo:
           path.addLine(to: points[0])
-        case .curveToBezierPathElement:
+        case .curveTo:
           path.addCurve(to: points[2], control1: points[0], control2: points[1])
-        case .closePathBezierPathElement:
+        case .closePath:
           path.closeSubpath()
         }
       }
@@ -73,98 +73,103 @@ internal extension ScaleType {
     case .locrian: return .d5
     case .mixolydian: return .m7
     case .phrygian: return .m2
-    case .lydian: return .unison
-    default: return .unison
+    case .lydian: return .P1
+    default: return .P1
     }
   }
 }
 
 // MARK: - NoteType Extension
 
-internal extension NoteType {
+internal extension Key {
   internal var circleIndex: Int {
     switch self {
-    case .c: return 0
-    case .g: return 1
-    case .d: return 2
-    case .a: return 3
-    case .e: return 4
-    case .b: return 5
-    case .gFlat: return 6
-    case .dFlat: return 7
-    case .aFlat: return 8
-    case .eFlat: return 9
-    case .bFlat: return 10
-    case .f: return 11
+    case "c": return 0
+    case "g": return 1
+    case "d": return 2
+    case "a": return 3
+    case "e": return 4
+    case "b": return 5
+    case "gb", "f#": return 6
+    case "db", "c#": return 7
+    case "ab", "g#": return 8
+    case "eb", "d#": return 9
+    case "bb", "a#": return 10
+    case "f": return 11
+    default: return 0
     }
   }
 
   #if os(OSX)
     internal var circleStartAngle: CGFloat {
     switch self {
-    case .c: return -15
-    case .f: return 15
-    case .bFlat: return 45
-    case .eFlat: return 75
-    case .aFlat: return 105
-    case .dFlat: return 135
-    case .gFlat: return 165
-    case .b: return 195
-    case .e: return 225
-    case .a: return 255
-    case .d: return 285
-    case .g: return 315
+    case "c": return -15
+    case "g": return 15
+    case "d": return 45
+    case "a": return 75
+    case "e": return 105
+    case "b": return 135
+    case "gb", "f#": return 165
+    case "db", "c#": return 195
+    case "ab", "g#": return 225
+    case "eb", "d#": return 255
+    case "bb", "a#": return 285
+    case "f": return 315
+    default: return 0
     }
   }
 
   internal var circleEndAngle: CGFloat {
     switch self {
-    case .c: return 15
-    case .f: return 45
-    case .bFlat: return 75
-    case .eFlat: return 105
-    case .aFlat: return 135
-    case .dFlat: return 165
-    case .gFlat: return 195
-    case .b: return 225
-    case .e: return 255
-    case .a: return 285
-    case .d: return 315
-    case .g: return 345
+    case "c": return 15
+    case "f": return 45
+    case "bb", "a#": return 75
+    case "eb", "d#": return 105
+    case "ab", "g#": return 135
+    case "db", "c#": return 165
+    case "gb", "f#": return 195
+    case "b": return 225
+    case "e": return 255
+    case "a": return 285
+    case "d": return 315
+    case "g": return 345
+    default: return 0
     }
   }
   #elseif os(iOS) || os(tvOS)
   internal var circleStartAngle: CGFloat {
     switch self {
-    case .c: return -15
-    case .g: return 15
-    case .d: return 45
-    case .a: return 75
-    case .e: return 105
-    case .b: return 135
-    case .gFlat: return 165
-    case .dFlat: return 195
-    case .aFlat: return 225
-    case .eFlat: return 255
-    case .bFlat: return 285
-    case .f: return 315
+    case "c": return -15
+    case "g": return 15
+    case "d": return 45
+    case "a": return 75
+    case "e": return 105
+    case "b": return 135
+    case "gb", "f#": return 165
+    case "db", "c#": return 195
+    case "ab", "g#": return 225
+    case "eb", "d#": return 255
+    case "bb", "a#": return 285
+    case "f": return 315
+    default: return 0
     }
   }
 
   internal var circleEndAngle: CGFloat {
     switch self {
-    case .c: return 15
-    case .g: return 45
-    case .d: return 75
-    case .a: return 105
-    case .e: return 135
-    case .b: return 165
-    case .gFlat: return 195
-    case .dFlat: return 225
-    case .aFlat: return 255
-    case .eFlat: return 285
-    case .bFlat: return 315
-    case .f: return 345
+    case "c": return 15
+    case "g": return 45
+    case "d": return 75
+    case "a": return 105
+    case "e": return 135
+    case "b": return 165
+    case "gb", "f#": return 195
+    case "db", "c#": return 225
+    case "ab", "g#": return 255
+    case "eb", "d#": return 285
+    case "bb", "a#": return 315
+    case "f": return 345
+    default: return 0
     }
   }
   #endif

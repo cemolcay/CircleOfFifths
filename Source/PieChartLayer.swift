@@ -99,7 +99,7 @@ public class PieChartLayer: CAShapeLayer {
 
       let textLayer = CATextLayer()
       #if os(OSX)
-        textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
+      textLayer.contentsScale = NSScreen.main?.backingScaleFactor ?? 1
       #elseif os(iOS) || os(tvOS)
         textLayer.contentsScale = UIScreen.main.scale
       #endif
