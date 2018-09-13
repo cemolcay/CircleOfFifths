@@ -24,33 +24,18 @@ public class CircleOfFifths: CRView {
   public var scale = Scale(type: .minor, key: Key(type: .c)) { didSet { redraw() }}
   @IBInspectable public var preferredAccidentIsFlats = true { didSet { redraw() }}
 
-  #if os(OSX)
-    @IBInspectable public var defaultColor: NSColor = .white { didSet { redraw() }}
-    @IBInspectable public var highlightedColor: NSColor = .red { didSet { redraw() }}
-    @IBInspectable public var disabledColor: NSColor = .lightGray { didSet { redraw() }}
-    @IBInspectable public var textColor: NSColor = .black { didSet { redraw() }}
-    @IBInspectable public var circlePieLineColor: NSColor = .black { didSet { redraw() }}
-    @IBInspectable public var majorColor: NSColor = .red { didSet { redraw() }}
-    @IBInspectable public var minorColor: NSColor = .blue { didSet { redraw() }}
-    @IBInspectable public var diminishedColor: NSColor = .green { didSet { redraw() }}
-    @IBInspectable public var majorTextColor: NSColor = .black { didSet { redraw() }}
-    @IBInspectable public var minorTextColor: NSColor = .black { didSet { redraw() }}
-    @IBInspectable public var diminishedTextColor: NSColor = .black { didSet { redraw() }}
-    @IBInspectable public var chordPieLineColor: NSColor = .black { didSet { redraw() }}
-  #elseif os(iOS) || os(tvOS)
-    @IBInspectable public var defaultColor: UIColor = .white { didSet { redraw() }}
-    @IBInspectable public var highlightedColor: UIColor = .red { didSet { redraw() }}
-    @IBInspectable public var disabledColor: UIColor = .lightGray { didSet { redraw() }}
-    @IBInspectable public var textColor: UIColor = .black { didSet { redraw() }}
-    @IBInspectable public var circlePieLineColor: UIColor = .black { didSet { redraw() }}
-    @IBInspectable public var majorColor: UIColor = .red { didSet { redraw() }}
-    @IBInspectable public var minorColor: UIColor = .blue { didSet { redraw() }}
-    @IBInspectable public var diminishedColor: UIColor = .green { didSet { redraw() }}
-    @IBInspectable public var majorTextColor: UIColor = .black { didSet { redraw() }}
-    @IBInspectable public var minorTextColor: UIColor = .black { didSet { redraw() }}
-    @IBInspectable public var diminishedTextColor: UIColor = .black { didSet { redraw() }}
-    @IBInspectable public var chordPieLineColor: UIColor = .black { didSet { redraw() }}
-  #endif
+  @IBInspectable public var defaultColor: CRColor = .white { didSet { redraw() }}
+  @IBInspectable public var highlightedColor: CRColor = .red { didSet { redraw() }}
+  @IBInspectable public var disabledColor: CRColor = .lightGray { didSet { redraw() }}
+  @IBInspectable public var textColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var circlePieLineColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var majorColor: CRColor = .red { didSet { redraw() }}
+  @IBInspectable public var minorColor: CRColor = .blue { didSet { redraw() }}
+  @IBInspectable public var diminishedColor: CRColor = .green { didSet { redraw() }}
+  @IBInspectable public var majorTextColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var minorTextColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var diminishedTextColor: CRColor = .black { didSet { redraw() }}
+  @IBInspectable public var chordPieLineColor: CRColor = .black { didSet { redraw() }}
 
   @IBInspectable public var chordPieLineWidth: CGFloat = 1 { didSet { redraw() }}
   @IBInspectable public var circlePieLineWidth: CGFloat = 1 { didSet { redraw() }}

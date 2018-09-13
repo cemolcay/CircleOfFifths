@@ -20,24 +20,7 @@ import MusicTheorySwift
   public typealias CRColor = NSColor
   public typealias CRFont = NSFont
   public typealias CRBezierPath = NSBezierPath
-#elseif os(iOS) || os(tvOS)
-  public typealias CRView = UIView
-  public typealias CRColor = UIColor
-  public typealias CRFont = UIFont
-  public typealias CRBezierPath = UIBezierPath
-#endif
 
-// MARK: - CGFloat Extension
-
-internal extension CGFloat {
-  var radians: CGFloat {
-    return self * .pi / 180.0
-  }
-}
-
-// MARK: - NSBezierPath Extension
-
-#if os(OSX)
   public extension NSBezierPath {
     public var cgPath: CGPath {
       let path = CGMutablePath()
@@ -60,7 +43,47 @@ internal extension CGFloat {
       return path
     }
   }
+#elseif os(iOS) || os(tvOS)
+  public typealias CRView = UIView
+  public typealias CRColor = UIColor
+  public typealias CRFont = UIFont
+  public typealias CRBezierPath = UIBezierPath
 #endif
+
+extension NSAttributedString {
+  var boundingRect : CGRect {
+    #if os(OSX)
+      if #available(OSX 10.11, *) {
+        return boundingRect(with: .max,
+                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                            context: nil)
+
+      } else {
+        return string.boundingRect(with: .max,
+                                   options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                   attributes: attributes(at: 0, effectiveRange: nil))
+
+      }
+    #elseif os(iOS) || os(tvOS)
+      return boundingRect(with: .max,
+                          options: [.usesLineFragmentOrigin, .usesFontLeading],
+                          context: nil)
+    #endif
+  }
+}
+
+// MARK: - CGFloat Extension
+
+internal extension CGFloat {
+  var radians: CGFloat {
+    return self * .pi / 180.0
+  }
+}
+
+extension CGSize {
+  static let max = CGSize(width: .max, height: .max)
+}
+
 
 // MARK: - ScaleType Extension
 
