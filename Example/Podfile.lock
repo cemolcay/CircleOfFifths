@@ -1,19 +1,23 @@
 PODS:
-  - CircleOfFifths (0.0.2):
+  - CircleOfFifths (0.0.3):
     - MusicTheorySwift
-  - MusicTheorySwift (0.0.4)
+  - MusicTheorySwift (1.1.0)
 
 DEPENDENCIES:
   - CircleOfFifths (from `..`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MusicTheorySwift
 
 EXTERNAL SOURCES:
   CircleOfFifths:
     :path: ".."
 
 SPEC CHECKSUMS:
-  CircleOfFifths: 792dcbfeba0d4aed0ae7f5e4e843a31a53970c7e
-  MusicTheorySwift: 213563918695d0a2fa37a805a0ad63b090a12bfe
+  CircleOfFifths: afb337af48e8876a173b36949adb5b56fdfd7127
+  MusicTheorySwift: 555d61fc174c36c7cb1a41cf20b54628ba6b3e32
 
 PODFILE CHECKSUM: 83124972e424e741c3156ed17f4f14af17ec386e
 
-COCOAPODS: 1.2.1.beta.1
+COCOAPODS: 1.5.3

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CircleOfFifths"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "Fully customisable IBDesignable circle of fifths implementation."
 
   # This description is used to generate tags and improve search results.
@@ -35,7 +35,7 @@ Fully customisable IBDesignable circle of fifths implementation.
 Requirements
 ----
 
-* Swift 3+
+* Swift 4+
 * iOS 8.0+
 * tvOS 9.0+
 * macOS 10.9+

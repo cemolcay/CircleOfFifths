@@ -21,7 +21,8 @@ internal enum CircleChordType {
 
 @IBDesignable
 public class CircleOfFifths: CRView {
-  public var scale = Scale(type: .minor, key: .c) { didSet { redraw() }}
+  public var scale = Scale(type: .minor, key: Key(type: .c)) { didSet { redraw() }}
+  @IBInspectable public var preferredAccidentIsFlats = true { didSet { redraw() }}
 
   #if os(OSX)
     @IBInspectable public var defaultColor: NSColor = .white { didSet { redraw() }}
@@ -63,7 +64,9 @@ public class CircleOfFifths: CRView {
   public var intervalFontSize: CGFloat = 15
   public var intervalTextTreshold: CGFloat = 15
 
-  private var circle: [NoteType] = [.c, .g, .d, .a, .e, .b, .gFlat, .dFlat, .aFlat, .eFlat, .bFlat, .f]
+  private var circleFlatKeys: [Key] = ["c", "g", "d", "a", "e", "b", "gb", "db", "ab", "eb", "bb", "f"]
+  private var circleSharpKeys: [Key] = ["c", "g", "d", "a", "e", "b", "f#", "c#", "g#", "d#", "a#", "f"]
+  private var circle: [Key] { return preferredAccidentIsFlats ? circleFlatKeys : circleSharpKeys }
   private var chords: [CircleChordType] = [.major, .major, .major, .minor, .minor, .minor, .diminished]
 
   private var circlePie = PieChartLayer()
@@ -103,8 +106,8 @@ public class CircleOfFifths: CRView {
         attributedString: NSAttributedString(
           string: "\($0)",
           attributes: [
-            NSForegroundColorAttributeName: textColor,
-            NSFontAttributeName: CRFont.boldSystemFont(ofSize: fontSize)
+            NSAttributedString.Key.foregroundColor: textColor,
+            NSAttributedString.Key.font: CRFont.boldSystemFont(ofSize: fontSize)
         ]))
     })
 
@@ -177,14 +180,14 @@ public class CircleOfFifths: CRView {
       $0.attributedString = NSAttributedString(
         string: $0.attributedString?.string ?? "",
         attributes: [
-          NSForegroundColorAttributeName: textColor,
-          NSFontAttributeName: CRFont.boldSystemFont(ofSize: fontSize)
+          NSAttributedString.Key.foregroundColor: textColor,
+          NSAttributedString.Key.font: CRFont.boldSystemFont(ofSize: fontSize)
         ])
     })
 
     // Determine chord notes
-    let rootNote = scale.key + scale.type.circleModeRootInterval
-    var chordNotes = [NoteType]()
+    let rootNote = Pitch(key: scale.key, octave: 0) + scale.type.circleModeRootInterval
+    var chordNotes = [Pitch]()
     for i in 0..<chords.count {
       if i == 0 {
         chordNotes.append(rootNote)
@@ -205,7 +208,7 @@ public class CircleOfFifths: CRView {
 
     for (index, note) in circle.enumerated() {
       let noteSlice = circlePie.slices[index]
-      if let noteIndex = chordNotes.index(of: note) {
+      if let noteIndex = chordNotes.map({ $0.key }).index(of: note) {
         let chordSlice = chordPie.slices[noteIndex]
         chordSlice.startAngle = note.circleStartAngle
         chordSlice.endAngle = note.circleEndAngle
@@ -217,8 +220,8 @@ public class CircleOfFifths: CRView {
         intervalSlice.attributedString = NSAttributedString(
           string: toRomanInterval(note: note, chordMode: chords[noteIndex]),
           attributes: [
-            NSForegroundColorAttributeName: textColor,
-            NSFontAttributeName: CRFont.systemFont(ofSize: intervalFontSize)
+            NSAttributedString.Key.foregroundColor: textColor,
+            NSAttributedString.Key.font: CRFont.systemFont(ofSize: intervalFontSize)
           ])
 
         noteSlice.isEnabled = true
@@ -243,20 +246,20 @@ public class CircleOfFifths: CRView {
 
     // Draw chord type over chord pie
     #if os(OSX)
-      let majorAngle = chordNotes[1].circleStartAngle + 15 + 90
-      let minorAngle = chordNotes[4].circleStartAngle + 15 + 90
-      let dimAngle = chordNotes[6].circleStartAngle + 15 + 90
+      let majorAngle = chordNotes[1].key.circleStartAngle + 15 + 90
+      let minorAngle = chordNotes[4].key.circleStartAngle + 15 + 90
+      let dimAngle = chordNotes[6].key.circleStartAngle + 15 + 90
     #elseif os(iOS) || os(tvOS)
-      let majorAngle = chordNotes[1].circleStartAngle + 15 - 90
-      let minorAngle = chordNotes[4].circleStartAngle + 15 - 90
-      let dimAngle = chordNotes[6].circleStartAngle + 15 - 90
+      let majorAngle = chordNotes[1].key.circleStartAngle + 15 - 90
+      let minorAngle = chordNotes[4].key.circleStartAngle + 15 - 90
+      let dimAngle = chordNotes[6].key.circleStartAngle + 15 - 90
     #endif
 
     majorArcText.text = NSAttributedString(
       string: "Major",
       attributes: [
-        NSForegroundColorAttributeName: majorTextColor,
-        NSFontAttributeName: CRFont.systemFont(ofSize: chordFontSize)
+        NSAttributedString.Key.foregroundColor: majorTextColor,
+        NSAttributedString.Key.font: CRFont.systemFont(ofSize: chordFontSize)
       ])
     majorArcText.angle = majorAngle
     majorArcText.radius = radius - chordTextTreshold
@@ -265,8 +268,8 @@ public class CircleOfFifths: CRView {
     minorArcText.text = NSAttributedString(
       string: "Minor",
       attributes: [
-        NSForegroundColorAttributeName: minorTextColor,
-        NSFontAttributeName: CRFont.systemFont(ofSize: chordFontSize)
+        NSAttributedString.Key.foregroundColor: minorTextColor,
+        NSAttributedString.Key.font: CRFont.systemFont(ofSize: chordFontSize)
       ])
     minorArcText.angle = minorAngle
     minorArcText.radius = radius - chordTextTreshold
@@ -275,16 +278,16 @@ public class CircleOfFifths: CRView {
     dimArcText.text = NSAttributedString(
       string: "Dim",
       attributes: [
-        NSForegroundColorAttributeName: diminishedTextColor,
-        NSFontAttributeName: CRFont.systemFont(ofSize: chordFontSize)
+        NSAttributedString.Key.foregroundColor: diminishedTextColor,
+        NSAttributedString.Key.font: CRFont.systemFont(ofSize: chordFontSize)
       ])
     dimArcText.angle = dimAngle
     dimArcText.radius = radius - chordTextTreshold
     dimArcText.frame = layer.bounds
   }
 
-  private func toRomanInterval(note: NoteType, chordMode: CircleChordType) -> String {
-    let notes = scale.noteTypes
+  private func toRomanInterval(note: Key, chordMode: CircleChordType) -> String {
+    let notes = scale.keys
     let index = Int(notes.index(of: note) ?? 10)
     var roman = ""
     switch index {
@@ -318,7 +321,7 @@ public class CircleOfFifths: CRView {
 
   // MARK: Selection
 
-  public func selectNote(note: NoteType?) {
+  public func selectNote(note: Key?) {
     selectedSlice?.isSelected = false
     guard let note = note
       else { return }

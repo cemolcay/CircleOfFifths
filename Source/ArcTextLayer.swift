@@ -46,9 +46,9 @@ public class ArcTextLayer: CALayer {
     for c in 0..<text.length {
       let textLayer = CATextLayer()
       textLayer.string = text.attributedSubstring(from: NSRange(c..<c+1))
-      textLayer.alignmentMode = kCAAlignmentCenter
+      textLayer.alignmentMode = CATextLayerAlignmentMode(rawValue: "center")
       #if os(OSX)
-        textLayer.contentsScale = NSScreen.main()?.backingScaleFactor ?? 1
+        textLayer.contentsScale = NSScreen.main?.backingScaleFactor ?? 1
       #elseif os(iOS) || os(tvOS)
         textLayer.contentsScale = UIScreen.main.scale
       #endif
@@ -170,4 +170,9 @@ public class ArcTextLayer: CALayer {
       radAngle += letterAngle
     }
   }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToCATextLayerAlignmentMode(_ input: String) -> CATextLayerAlignmentMode {
+	return CATextLayerAlignmentMode(rawValue: input)
 }
